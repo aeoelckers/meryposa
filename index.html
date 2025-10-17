@@ -3,371 +3,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitaci&oacute;n 17 de octubre</title>
+    <title>Mery, viernes 17</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1f2937 50%, #f97316 100%);
-            --card-bg: rgba(15, 23, 42, 0.55);
-            --accent: #f97316;
-            --text-light: #f8fafc;
-            --text-muted: rgba(248, 250, 252, 0.75);
-            --border: rgba(249, 115, 22, 0.35);
+            --bg: linear-gradient(140deg, #f6f5f2 0%, #eef4f6 100%);
+            --panel: rgba(255, 255, 255, 0.82);
+            --surface: rgba(255, 255, 255, 0.94);
+            --accent: #2f8f9d;
+            --accent-soft: rgba(47, 143, 157, 0.12);
+            --accent-warm: #f2b880;
+            --text-main: #2b3137;
+            --text-soft: #5a6672;
+            --border: rgba(220, 228, 233, 0.9);
+            --shadow: 0 20px 48px rgba(182, 193, 204, 0.35);
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
         body {
             margin: 0;
             min-height: 100vh;
+            background: var(--bg);
             font-family: 'Poppins', Arial, sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-light);
+            color: var(--text-main);
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: clamp(20px, 5vw, 48px);
         }
 
         .invitation {
-            width: min(960px, 100%);
-            backdrop-filter: blur(18px);
-            background: rgba(15, 23, 42, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
+            width: min(1024px, 100%);
+            background: var(--panel);
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 35px 60px rgba(15, 23, 42, 0.55);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+            box-shadow: var(--shadow);
         }
 
         header {
             position: relative;
-            padding: clamp(32px, 6vw, 64px);
-            background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.35), transparent 55%);
+            padding: clamp(48px, 9vw, 120px) clamp(32px, 8vw, 96px);
+            display: grid;
+            gap: clamp(18px, 4vw, 28px);
+            color: #fff;
+            background-image: linear-gradient(120deg, rgba(47, 143, 157, 0.78), rgba(48, 62, 77, 0.55)), url('FV/foto09.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
         header::after {
             content: "";
             position: absolute;
-            inset: 12px;
+            inset: 24px;
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            opacity: 0.6;
             pointer-events: none;
         }
 
         .subtitle {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            letter-spacing: 0.25rem;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 18px;
+            letter-spacing: 0.28em;
+            font-weight: 500;
         }
 
         h1 {
             margin: 0;
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2.4rem, 8vw, 3.9rem);
-            line-height: 1.1;
-            color: #fff;
+            font-size: clamp(2.5rem, 8vw, 3.9rem);
+            line-height: 1.05;
+            font-weight: 600;
         }
 
         .intro {
-            margin-top: 18px;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: var(--text-muted);
             max-width: 540px;
+            font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.82);
+            font-weight: 400;
         }
 
         .date-badge {
-            margin-top: clamp(24px, 5vw, 40px);
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 14px 22px;
+            gap: 14px;
+            padding: 14px 28px;
             border-radius: 999px;
-            background: rgba(249, 115, 22, 0.15);
-            color: #fff;
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.12em;
             font-weight: 600;
-            letter-spacing: 0.08em;
         }
 
-        .timeline {
-            padding: clamp(28px, 6vw, 60px);
-            background: rgba(15, 23, 42, 0.55);
-        }
+        section { padding: clamp(36px, 7vw, 72px); }
+
+        .timeline { background: rgba(255, 255, 255, 0.65); }
 
         .timeline-grid {
             display: grid;
-            gap: clamp(18px, 3vw, 28px);
+            gap: clamp(20px, 3.5vw, 32px);
         }
 
         .timeline-item {
+            background: var(--surface);
+            border-radius: 22px;
+            padding: clamp(24px, 5vw, 34px);
+            border: 1px solid var(--border);
+            box-shadow: 0 16px 32px rgba(185, 198, 207, 0.35);
             position: relative;
-            padding: clamp(22px, 5vw, 32px);
-            background: rgba(15, 23, 42, 0.55);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.45);
         }
 
-        .timeline-item::before {
+        .timeline-item::after {
             content: "";
             position: absolute;
             inset: 0;
-            border-radius: inherit;
-            border: 1px solid rgba(249, 115, 22, 0.2);
+            background: linear-gradient(135deg, transparent 55%, var(--accent-soft));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
         }
 
-        .timeline-item:hover::before {
-            opacity: 1;
-        }
+        .timeline-item:hover::after { opacity: 1; }
 
         .time {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
             font-weight: 600;
             color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
         }
 
         .time span {
-            display: inline-block;
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 999px;
-            background: rgba(249, 115, 22, 0.15);
+            background: var(--accent-soft);
+            color: var(--accent);
         }
 
         .activity {
-            margin-top: 14px;
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
-            font-weight: 600;
+            margin-top: 16px;
+            font-size: clamp(1.35rem, 4vw, 1.8rem);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 500;
         }
 
         .description {
-            margin-top: 10px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            margin-top: 12px;
+            color: var(--text-soft);
+            line-height: 1.7;
         }
 
         .details {
-            padding: clamp(28px, 6vw, 60px);
+            background: rgba(255, 255, 255, 0.72);
             display: grid;
-            gap: 24px;
-            background: rgba(249, 115, 22, 0.1);
+            gap: clamp(24px, 4vw, 34px);
         }
 
         .details-card {
-            padding: clamp(22px, 5vw, 32px);
-            border-radius: 24px;
-            background: rgba(15, 23, 42, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            display: grid;
-            gap: 12px;
+            background: var(--surface);
+            border-radius: 22px;
+            padding: clamp(24px, 5vw, 34px);
+            border: 1px solid var(--border);
+            box-shadow: 0 18px 32px rgba(188, 198, 208, 0.34);
         }
 
         .details-card h2 {
             margin: 0;
-            font-size: clamp(1.2rem, 3.8vw, 1.6rem);
+            font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--accent);
         }
 
         .details-card p {
-            margin: 0;
-            color: var(--text-muted);
-            line-height: 1.6;
+            margin: 14px 0 0;
+            color: var(--text-soft);
+            line-height: 1.7;
         }
 
         .cta {
+            margin-top: clamp(18px, 4vw, 26px);
             display: flex;
             flex-wrap: wrap;
+            gap: 16px;
             align-items: center;
-            gap: 18px;
-            margin-top: 8px;
         }
 
         .cta button {
-            padding: 14px 28px;
-            border-radius: 999px;
+            padding: 14px 32px;
             border: none;
-            background: var(--accent);
-            color: #0f172a;
-            font-weight: 700;
+            border-radius: 999px;
+            background: linear-gradient(120deg, var(--accent), #3caab5);
+            color: #fff;
+            font-weight: 600;
             letter-spacing: 0.08em;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 18px 32px rgba(47, 143, 157, 0.32);
         }
 
         .cta button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 16px 35px rgba(249, 115, 22, 0.35);
+            box-shadow: 0 22px 40px rgba(47, 143, 157, 0.38);
         }
 
-        .memories {
-            padding: clamp(28px, 6vw, 60px);
-            background: rgba(15, 23, 42, 0.35);
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
+        .cta span { color: var(--text-soft); font-weight: 500; }
+
+        .memories { background: rgba(255, 255, 255, 0.78); }
 
         .section-heading {
-            display: grid;
-            gap: 14px;
             text-align: center;
-            margin-bottom: clamp(28px, 5vw, 42px);
+            display: grid;
+            gap: 16px;
+            margin-bottom: clamp(30px, 5vw, 48px);
         }
 
         .section-heading h2 {
             margin: 0;
-            font-size: clamp(1.8rem, 5vw, 2.4rem);
             font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.9rem, 5vw, 2.5rem);
+            color: var(--accent);
         }
 
         .section-heading p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: clamp(0.95rem, 2.4vw, 1.05rem);
+            margin: 0 auto;
+            max-width: 540px;
+            color: var(--text-soft);
         }
 
         .gallery-grid {
             display: grid;
-            gap: clamp(12px, 2.5vw, 24px);
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: clamp(12px, 2.5vw, 22px);
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         }
 
         .gallery-grid figure {
-            position: relative;
-            overflow: hidden;
+            aspect-ratio: 4/5;
             border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(15, 23, 42, 0.6);
-            aspect-ratio: 4 / 5;
-            box-shadow: 0 18px 32px rgba(15, 23, 42, 0.35);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #f7f9fa;
+            box-shadow: 0 18px 30px rgba(188, 196, 205, 0.3);
+            position: relative;
+        }
+
+        .gallery-grid figure::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(140deg, transparent, rgba(47, 143, 157, 0.12));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .gallery-grid img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.35s ease;
         }
 
-        .gallery-grid figure:hover img {
-            transform: scale(1.05);
-        }
+        .gallery-grid figure:hover img { transform: scale(1.04); }
+
+        .gallery-grid figure:hover::after { opacity: 1; }
 
         .video-card {
-            margin-top: clamp(36px, 6vw, 56px);
+            margin-top: clamp(38px, 6vw, 56px);
             display: grid;
-            gap: clamp(18px, 4vw, 32px);
+            gap: clamp(22px, 4vw, 30px);
             align-items: center;
-            padding: clamp(24px, 5vw, 36px);
+            background: var(--surface);
             border-radius: 24px;
-            background: rgba(15, 23, 42, 0.55);
-            border: 1px solid rgba(249, 115, 22, 0.2);
+            padding: clamp(26px, 5vw, 38px);
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 36px rgba(188, 198, 208, 0.35);
         }
 
         .video-copy h3 {
             margin: 0;
-            font-size: clamp(1.4rem, 4vw, 1.9rem);
             font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.45rem, 4vw, 1.9rem);
+            color: var(--accent);
         }
 
         .video-copy p {
-            margin: 8px 0 0;
-            color: var(--text-muted);
+            margin: 10px 0 0;
+            color: var(--text-soft);
             line-height: 1.6;
         }
 
         .video-card video {
             width: 100%;
             border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: #000;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.45);
+            border: 1px solid var(--border);
+            background: #0f1418;
+            box-shadow: 0 20px 36px rgba(152, 163, 175, 0.32);
         }
 
         footer {
-            padding: clamp(24px, 5vw, 40px);
+            padding: clamp(26px, 5vw, 40px);
             text-align: center;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            background: rgba(15, 23, 42, 0.55);
+            font-size: 0.98rem;
+            color: var(--text-soft);
+            background: rgba(255, 255, 255, 0.68);
+            border-top: 1px solid var(--border);
         }
 
-        @media (min-width: 720px) {
-            .timeline-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .details {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                align-items: start;
-            }
-
-            .details-card:last-child {
-                grid-column: span 2;
-            }
+        @media (min-width: 768px) {
+            .timeline-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .details-card:last-child { grid-column: span 2; }
         }
 
-        @media (min-width: 960px) {
-            .video-card {
-                grid-template-columns: 1.1fr 1fr;
-            }
-
-            .video-copy {
-                max-width: 420px;
-            }
+        @media (min-width: 992px) {
+            .video-card { grid-template-columns: 1.05fr 1fr; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            * {
-                transition-duration: 0.01ms !important;
-                animation-duration: 0.01ms !important;
-            }
+            * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
         }
     </style>
 </head>
 <body>
     <main class="invitation">
         <header>
-            <div class="subtitle">Celebremos, amor</div>
-            <h1>Viernes 17 de octubre<br>Dos meses contigo</h1>
+            <div class="subtitle">Meryposa agenda</div>
+            <h1>Viernes 17 de octubre</h1>
             <p class="intro">
-                Organic&eacute; una tarde-noche para nosotros dos. Todo listo para que podamos brindar por estos dos meses que se sienten como magia. Solo t&uacute; y yo celebrando cada momento.
+                Mery, arm&eacute; una tarde para que solo nos dediquemos a disfrutar. Golf suave, terraza con vista y cierre con jazz. Nada de apuros, solo nuestro ritmo.
             </p>
-            <div class="date-badge">
-                17 de octubre &bull; Ma&ntilde;ana &bull; Santiago
-            </div>
+            <div class="date-badge">19:00 &bull; Sport Fran&ccedil;ais &bull; Santiago</div>
         </header>
 
         <section class="timeline">
             <div class="timeline-grid">
                 <article class="timeline-item">
                     <div class="time"><span>19:00</span> Sport Fran&ccedil;ais</div>
-                    <div class="activity">Golf bajo el atardecer</div>
+                    <div class="activity">Golf al atardecer</div>
                     <p class="description">
-                        Partimos con unas rondas relajadas en la cancha. Solo nosotros, palos suaves, risa c&oacute;mplice y el cielo pintado de dorado.
+                        Primer bloque relajado para conversar y golpear un par de tiros con luz dorada. Tengo los horarios reservados.
                     </p>
                 </article>
                 <article class="timeline-item">
                     <div class="time"><span>20:15</span> Terraza privada</div>
-                    <div class="activity">Coctel sunset</div>
+                    <div class="activity">Coctel frente a la ca&#237;da del sol</div>
                     <p class="description">
-                        Nuestra mesa nos espera con un coctel hecho a medida. M&uacute;sica chill, luces tenues y ese glow perfecto del atardecer.
+                        Mesa lista, algo fresco para picar y playlist liviana. Ideal para seguir sumando historias sin distracciones.
                     </p>
                 </article>
                 <article class="timeline-item">
                     <div class="time"><span>22:00</span> Thelonious Bar</div>
-                    <div class="activity">Final con jazz</div>
+                    <div class="activity">Jazz y cierre tranquilo</div>
                     <p class="description">
-                        Cerramos la noche con jazz en vivo. Copas suaves, melod&iacute;as que acarician y ese abrazo interminable para sellar la velada.
+                        Butacas reservadas para escuchar la banda. Copas suaves y la noche entregada a la m&uacute;sica.
                     </p>
                 </article>
             </div>
@@ -375,53 +366,51 @@
 
         <section class="details">
             <div class="details-card">
-                <h2>&iquest;Qu&eacute; llevar?</h2>
+                <h2>Checklist ligero</h2>
                 <p>
-                    Solo tu sonrisa y ganas de celebrar. Yo me encargo del resto: reservas, traslados y sorpresas extra.
+                    Tu sonrisa y ganas de moverte. El resto lo cubro yo: equipamiento, reservas y traslados entre cada parada.
                 </p>
             </div>
             <div class="details-card">
-                <h2>Dress code</h2>
+                <h2>C&oacute;digo de vestuario</h2>
                 <p>
-                    Elegantemente c&oacute;modo: algo chic para el sport y la terraza, con abrigo ligero para la noche en Thelonious.
+                    Resort elegante: algo c&oacute;modo para el golf y la terraza, con un abrigo fino para el bar de jazz.
                 </p>
             </div>
             <div class="details-card">
-                <h2>Promesa</h2>
+                <h2>Nota final</h2>
                 <p>
-                    Este es solo el comienzo. Hoy celebramos lo que somos, ma&ntilde;ana seguimos creando historias.
+                    Dos meses van volando. Sigamos sumando planes como este: simples, elegantes y siempre contigo, Mery.
                 </p>
                 <div class="cta">
-                    <button>&iexcl;Contigo voy!</button>
-                    <span>Conf&iacute;a en m&iacute;, lo tengo todo listo.</span>
+                    <button>Confirmo asistencia</button>
+                    <span>Meryposa, solo dime si paso por ti.</span>
                 </div>
             </div>
         </section>
 
         <section class="memories" id="recuerdos">
             <div class="section-heading">
-                <h2>Momentos que guardo conmigo</h2>
-                <p>
-                    Un mini highlight de nosotros: risas, abrazos y esa chispa que hace que todo valga la pena.
-                </p>
+                <h2>Galer&#237;a Meryposa</h2>
+                <p>Peque&ntilde;a selecci&oacute;n de fotos que me recuerdan por qu&eacute; disfruto cada plan a tu lado.</p>
             </div>
-            <div class="gallery-grid" aria-label="Galer&iacute;a de recuerdos">
+            <div class="gallery-grid" aria-label="Galer&#237;a de recuerdos">
                 <figure><img src="FV/foto01.jpg" alt="Foto juntos sonriendo" loading="lazy"></figure>
-                <figure><img src="FV/foto02.jpg" alt="T&uacute; y yo abrazados" loading="lazy"></figure>
+                <figure><img src="FV/foto02.jpg" alt="Abrazo en exterior" loading="lazy"></figure>
                 <figure><img src="FV/foto03.jpg" alt="Selfie divertida" loading="lazy"></figure>
-                <figure><img src="FV/foto04.jpg" alt="Momento de viaje" loading="lazy"></figure>
-                <figure><img src="FV/foto05.jpg" alt="Brindis juntos" loading="lazy"></figure>
-                <figure><img src="FV/foto06.jpg" alt="Foto al atardecer" loading="lazy"></figure>
-                <figure><img src="FV/foto07.jpg" alt="Caminata de la mano" loading="lazy"></figure>
-                <figure><img src="FV/foto08.jpg" alt="Risa espont&aacute;nea" loading="lazy"></figure>
-                <figure><img src="FV/foto09.jpg" alt="Mirada especial" loading="lazy"></figure>
+                <figure><img src="FV/foto04.jpg" alt="Escapada de fin de semana" loading="lazy"></figure>
+                <figure><img src="FV/foto05.jpg" alt="Brindis" loading="lazy"></figure>
+                <figure><img src="FV/foto06.jpg" alt="Atardecer juntos" loading="lazy"></figure>
+                <figure><img src="FV/foto07.jpg" alt="Caminata" loading="lazy"></figure>
+                <figure><img src="FV/foto08.jpg" alt="Risa espont&#225;nea" loading="lazy"></figure>
+                <figure><img src="FV/foto09.jpg" alt="Retrato de Mery" loading="lazy"></figure>
                 <figure><img src="FV/foto10.jpg" alt="Detalle cari&ntilde;oso" loading="lazy"></figure>
             </div>
             <div class="video-card">
                 <div class="video-copy">
-                    <h3>Video sorpresa</h3>
+                    <h3>Clip r&aacute;pido</h3>
                     <p>
-                        Para cerrar, un clip cortito que me recuerda lo bien que la pasamos cada d&iacute;a. Dale play y ven a celebrarlo en vivo conmigo.
+                        Un minuto de recuerdos en movimiento para entrar en modo celebraci&oacute;n. Ma&ntilde;ana seguimos en vivo.
                     </p>
                 </div>
                 <video controls playsinline preload="metadata">
@@ -432,8 +421,11 @@
         </section>
 
         <footer>
-            Hecho con todo mi amor para ti. Te veo ma&ntilde;ana para quedarnos hasta que el jazz se apague.
+            Nos vemos ma&ntilde;ana, Mery. Paso por ti y arrancamos puntuales a las 19:00.
         </footer>
     </main>
 </body>
 </html>
+
+
+
