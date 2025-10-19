@@ -1,24 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mery, viernes 17</title>
+    <title>Nuestros recuerdos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: linear-gradient(140deg, #f6f5f2 0%, #eef4f6 100%);
-            --panel: rgba(255, 255, 255, 0.82);
-            --surface: rgba(255, 255, 255, 0.94);
+            --bg: linear-gradient(145deg, #f3f6f9 0%, #eef3f7 45%, #f8f5f0 100%);
+            --panel: rgba(255, 255, 255, 0.78);
+            --surface: rgba(255, 255, 255, 0.92);
+            --text-main: #2b3137;
+            --text-soft: #5f6b78;
             --accent: #2f8f9d;
             --accent-soft: rgba(47, 143, 157, 0.12);
-            --accent-warm: #f2b880;
-            --text-main: #2b3137;
-            --text-soft: #5a6672;
-            --border: rgba(220, 228, 233, 0.9);
-            --shadow: 0 20px 48px rgba(182, 193, 204, 0.35);
+            --shadow: 0 24px 48px rgba(182, 193, 204, 0.35);
+            color-scheme: light;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -30,656 +29,397 @@
             font-family: 'Poppins', Arial, sans-serif;
             color: var(--text-main);
             display: flex;
-            justify-content: center;
-            padding: clamp(20px, 5vw, 48px);
-        }
-
-        .invitation {
-            width: min(1024px, 100%);
-            background: var(--panel);
-            border-radius: 30px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            backdrop-filter: blur(18px);
-            box-shadow: var(--shadow);
+            flex-direction: column;
         }
 
         header {
-            position: relative;
-            padding: clamp(48px, 9vw, 120px) clamp(32px, 8vw, 96px);
-            display: grid;
-            gap: clamp(18px, 4vw, 28px);
-            color: #fff;
-            background-image: linear-gradient(120deg, rgba(47, 143, 157, 0.78), rgba(48, 62, 77, 0.55)), url('FV/foto09.jpg');
-            background-size: cover;
-            background-position: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--panel);
+            border-bottom: 1px solid rgba(209, 219, 228, 0.7);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 6px 18px rgba(164, 180, 194, 0.28);
         }
 
-        header::after {
-            content: "";
-            position: absolute;
-            inset: 24px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        .subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            text-transform: uppercase;
-            letter-spacing: 0.28em;
-            font-weight: 500;
-        }
-
-        h1 {
-            margin: 0;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2.5rem, 8vw, 3.9rem);
-            line-height: 1.05;
-            font-weight: 600;
-        }
-
-        .intro {
-            max-width: 540px;
-            font-size: clamp(1.05rem, 2.6vw, 1.2rem);
-            color: rgba(255, 255, 255, 0.82);
-            font-weight: 400;
-        }
-
-        .date-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 28px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.25);
-            letter-spacing: 0.12em;
-            font-weight: 600;
-        }
-
-        section { padding: clamp(36px, 7vw, 72px); }
-
-        .timeline { background: rgba(255, 255, 255, 0.65); }
-
-        .timeline-grid {
-            display: grid;
-            gap: clamp(20px, 3.5vw, 32px);
-        }
-
-        .timeline-item {
-            background: var(--surface);
-            border-radius: 22px;
-            padding: clamp(24px, 5vw, 34px);
-            border: 1px solid var(--border);
-            box-shadow: 0 16px 32px rgba(185, 198, 207, 0.35);
-            position: relative;
-        }
-
-        .timeline-item::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent 55%, var(--accent-soft));
-            opacity: 0;
-            transition: opacity 0.25s ease;
-        }
-
-        .timeline-item:hover::after { opacity: 1; }
-
-        .time {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .time span {
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-
-        .activity {
-            margin-top: 16px;
-            font-size: clamp(1.35rem, 4vw, 1.8rem);
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 500;
-        }
-
-        .description {
-            margin-top: 12px;
-            color: var(--text-soft);
-            line-height: 1.7;
-        }
-
-        .details {
-            background: rgba(255, 255, 255, 0.72);
-            display: grid;
-            gap: clamp(24px, 4vw, 34px);
-        }
-
-        .details-card {
-            background: var(--surface);
-            border-radius: 22px;
-            padding: clamp(24px, 5vw, 34px);
-            border: 1px solid var(--border);
-            box-shadow: 0 18px 32px rgba(188, 198, 208, 0.34);
-        }
-
-        .details-card h2 {
-            margin: 0;
-            font-size: clamp(1.3rem, 3.5vw, 1.6rem);
-            font-family: 'Playfair Display', Georgia, serif;
-            color: var(--accent);
-        }
-
-        .details-card p {
-            margin: 14px 0 0;
-            color: var(--text-soft);
-            line-height: 1.7;
-        }
-
-        .cta {
-            margin-top: clamp(18px, 4vw, 26px);
+        .topbar {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: clamp(16px, 4vw, 32px);
             align-items: center;
+            justify-content: space-between;
+            padding: clamp(18px, 4vw, 28px) clamp(20px, 4.5vw, 48px);
         }
 
-        .cta button {
-            padding: 14px 32px;
-            border: none;
-            border-radius: 999px;
-            background: linear-gradient(120deg, var(--accent), #3caab5);
-            color: #fff;
+        .topbar-info {
+            display: grid;
+            gap: 6px;
+        }
+
+        .topbar-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+        }
+
+        .topbar-title {
+            margin: 0;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
             font-weight: 600;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 18px 32px rgba(47, 143, 157, 0.32);
         }
 
-        .cta button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 22px 40px rgba(47, 143, 157, 0.38);
-        }
-
-        .cta span { color: var(--text-soft); font-weight: 500; }
-
-        .memories { background: rgba(255, 255, 255, 0.78); }
-
-        .section-heading {
-            text-align: center;
-            display: grid;
-            gap: 16px;
-            margin-bottom: clamp(30px, 5vw, 48px);
-        }
-
-        .section-heading h2 {
+        .topbar-date {
             margin: 0;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1.9rem, 5vw, 2.5rem);
-            color: var(--accent);
-        }
-
-        .section-heading p {
-            margin: 0 auto;
-            max-width: 540px;
             color: var(--text-soft);
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
         }
 
-        .gallery-shell {
-            position: relative;
-            display: grid;
-            gap: clamp(18px, 4vw, 28px);
-        }
-
-        .gallery-track {
-            display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: minmax(180px, 1fr);
-            gap: clamp(16px, 3vw, 24px);
-            overflow-x: auto;
-            padding-bottom: 8px;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-        }
-
-        .gallery-track::-webkit-scrollbar { display: none; }
-
-        .gallery-item {
-            scroll-snap-align: center;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: #f7f9fa;
-            box-shadow: 0 18px 30px rgba(188, 196, 205, 0.3);
-            aspect-ratio: 4 / 5;
-            position: relative;
-        }
-
-        .gallery-item::after {\n            content: "";\n            position: absolute;\n            inset: 0;\n            background: linear-gradient(140deg, transparent, rgba(47, 143, 157, 0.14));\n            opacity: 0;\n            transition: opacity 0.3s ease;\n            pointer-events: none;\n        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.35s ease;
-            cursor: pointer;
-        }
-
-        .gallery-item img:focus {
-            outline: 3px solid rgba(47, 143, 157, 0.4);
-            outline-offset: 4px;
-        }
-
-        .gallery-item:hover img { transform: scale(1.04); }
-
-        .gallery-item:hover::after { opacity: 1; }
-
-        .gallery-controls {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .gallery-controls button {
-            width: 48px;
-            height: 48px;
+        .menu-button {
+            padding: 12px 22px;
             border-radius: 999px;
-            border: 1px solid var(--border);
-            background: var(--surface);
+            border: 1px solid rgba(47, 143, 157, 0.2);
+            background: rgba(47, 143, 157, 0.16);
             color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.04em;
             cursor: pointer;
-            font-size: 1.4rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 12px 24px rgba(186, 194, 205, 0.32);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.18s ease, background 0.2s ease;
         }
 
-        .gallery-controls button:hover {
+        .menu-button:hover,
+        .menu-button:focus-visible {
             transform: translateY(-1px);
-            box-shadow: 0 16px 32px rgba(186, 194, 205, 0.36);
+            background: rgba(47, 143, 157, 0.24);
+            outline: none;
         }
 
-        .video-card {
-            margin-top: clamp(38px, 6vw, 56px);
-            display: grid;
-            gap: clamp(22px, 4vw, 30px);
-            align-items: center;
-            background: var(--surface);
-            border-radius: 24px;
-            padding: clamp(26px, 5vw, 38px);
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 36px rgba(188, 198, 208, 0.35);
+        .viewer {
+            flex: 1;
+            display: flex;
+            min-height: 0;
         }
 
-        .video-copy h3 {
-            margin: 0;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1.45rem, 4vw, 1.9rem);
-            color: var(--accent);
-        }
-
-        .video-copy p {
-            margin: 10px 0 0;
-            color: var(--text-soft);
-            line-height: 1.6;
-        }
-
-        .video-card video {
+        .viewer iframe {
+            flex: 1;
+            border: none;
             width: 100%;
-            border-radius: 18px;
-            border: 1px solid var(--border);
-            background: #0f1418;
-            box-shadow: 0 20px 36px rgba(152, 163, 175, 0.32);
+            background: rgba(255, 255, 255, 0.6);
         }
 
-        footer {
-            padding: clamp(26px, 5vw, 40px);
+        .empty-state {
+            margin: auto;
             text-align: center;
-            font-size: 0.98rem;
             color: var(--text-soft);
-            background: rgba(255, 255, 255, 0.68);
-            border-top: 1px solid var(--border);
+            max-width: 320px;
+            display: none;
         }
 
-        .lightbox {
+        .empty-state.is-visible { display: block; }
+
+        .overlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 22, 32, 0.82);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(24px, 6vw, 60px);
+            display: grid;
+            place-items: center;
+            padding: clamp(20px, 4vw, 48px);
+            background: rgba(17, 26, 37, 0.58);
+            backdrop-filter: blur(8px);
+            transition: opacity 0.25s ease;
+        }
+
+        .overlay[aria-hidden="true"] {
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s ease;
-            z-index: 40;
         }
 
-        .lightbox.is-open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: min(860px, 100%);
-            width: 100%;
+        .overlay-card {
+            width: min(760px, 100%);
+            max-height: min(640px, 100%);
+            padding: clamp(28px, 6vw, 40px);
+            background: var(--surface);
+            border-radius: 28px;
+            border: 1px solid rgba(220, 228, 236, 0.8);
+            box-shadow: var(--shadow);
             display: grid;
-            gap: 16px;
-            justify-items: center;
+            gap: clamp(20px, 3vw, 28px);
+            overflow: hidden;
         }
 
-        .lightbox-image {
-            width: 100%;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.55);
-            box-shadow: 0 28px 45px rgba(0, 0, 0, 0.4);
-            background: #000;
-        }
-
-        .lightbox-caption {
-            color: rgba(255, 255, 255, 0.86);
-            font-size: 1rem;
+        .overlay-header {
+            display: grid;
+            gap: 12px;
             text-align: center;
         }
 
-        .lightbox-close {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 44px;
-            height: 44px;
-            border-radius: 999px;
-            border: none;
-            background: rgba(15, 22, 32, 0.75);
-            color: #fff;
-            font-size: 1.6rem;
-            cursor: pointer;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+        .overlay-title {
+            margin: 0;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            font-size: clamp(2rem, 5vw, 2.8rem);
         }
 
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 46px;
-            height: 46px;
-            border-radius: 999px;
-            border: none;
-            background: rgba(15, 22, 32, 0.7);
-            color: #fff;
-            font-size: 1.6rem;
-            cursor: pointer;
-            display: inline-flex;
+        .overlay-subtitle {
+            margin: 0 auto;
+            max-width: 420px;
+            color: var(--text-soft);
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+        }
+
+        .event-list {
+            display: grid;
+            gap: 14px;
+            overflow: auto;
+            padding-right: 4px;
+        }
+
+        .event-option {
+            display: grid;
+            grid-template-columns: minmax(0, auto) 1fr;
+            gap: 18px;
             align-items: center;
+            padding: 16px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(209, 219, 228, 0.7);
+            background: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .event-option:hover,
+        .event-option:focus-within {
+            border-color: rgba(47, 143, 157, 0.35);
+            background: rgba(47, 143, 157, 0.08);
+            box-shadow: 0 12px 24px rgba(182, 193, 204, 0.28);
+        }
+
+        .event-option input {
+            margin: 0;
+            width: 22px;
+            height: 22px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .event-content {
+            display: grid;
+            gap: 4px;
+        }
+
+        .event-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .event-meta {
+            font-size: 0.92rem;
+            color: var(--text-soft);
+        }
+
+        .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
             justify-content: center;
         }
 
-        .lightbox-nav.prev { left: -18px; }
-        .lightbox-nav.next { right: -18px; }
-
-        @media (max-width: 640px) {
-            .lightbox-close { top: -10px; right: -10px; }
-            .lightbox-nav.prev { left: 6px; }
-            .lightbox-nav.next { right: 6px; }
-            .lightbox-nav { background: rgba(15, 22, 32, 0.55); }
+        .primary {
+            padding: 14px 28px;
+            border-radius: 999px;
+            border: none;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            box-shadow: 0 16px 28px rgba(47, 143, 157, 0.28);
+            transition: transform 0.18s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
 
-        @media (min-width: 768px) {
-            .timeline-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .details-card:last-child { grid-column: span 2; }
+        .primary:hover,
+        .primary:focus-visible {
+            transform: translateY(-1px);
+            background: #277685;
+            box-shadow: 0 20px 32px rgba(47, 143, 157, 0.36);
+            outline: none;
         }
 
-        @media (min-width: 992px) {
-            .video-card { grid-template-columns: 1.05fr 1fr; }
+        .secondary {
+            background: transparent;
+            border: none;
+            color: var(--text-soft);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        @media (max-width: 680px) {
+            .event-option {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .event-option input {
+                justify-self: center;
+            }
+
+            .topbar {
+                justify-content: center;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
 <body>
-    <main class="invitation">
-        <header>
-            <div class="subtitle">Meryposa agenda</div>
-            <h1>Viernes 17 de octubre</h1>
-            <p class="intro">
-                Mery, te tengo una tarde para que solo nos dediquemos a disfrutar. Golfitos con apuestas, tomarnos unas cositas en la terraza y cerrar con un jazz. Nada de apuros, solo nuestro ritmo.
-            </p>
-            <div class="date-badge">19:00 &bull; Sport Fran&ccedil;ais &bull; Santiago</div>
-        </header>
+    <header>
+        <div class="topbar">
+            <div class="topbar-info" id="topbarInfo">
+                <span class="topbar-label">Recuerdo actual</span>
+                <h1 class="topbar-title" id="currentTitle">Selecciona un recuerdo</h1>
+                <p class="topbar-date" id="currentDate">Usa el menú para abrir uno</p>
+            </div>
+            <button class="menu-button" type="button" id="openMenuBtn">Ver menú</button>
+        </div>
+    </header>
 
-        <section class="timeline">
-            <div class="timeline-grid">
-                <article class="timeline-item">
-                    <div class="time"><span>19:00</span> Sport Fran&ccedil;ais</div>
-                    <div class="activity">Golf al atardecer</div>
-                    <p class="description">
-                        Primer bloque relajado para conversar y golpear un par de tiros el atardecer. Tengo los horarios reservados.
-                    </p>
-                </article>
-                <article class="timeline-item">
-                    <div class="time"><span>20:15</span> Terraza privada</div>
-                    <div class="activity">Coctel frente a la ca&iacute;da del sol</div>
-                    <p class="description">
-                        Mesa lista, algo fresco para picar y playlist liviana. Ideal para seguir sumando historias sin distracciones.
-                    </p>
-                </article>
-                <article class="timeline-item">
-                    <div class="time"><span>22:00</span> Thelonious Bar</div>
-                    <div class="activity">Jazz y cierre tranquilo</div>
-                    <p class="description">
-                        Butacas reservadas para escuchar la banda. Copas suaves y la noche entregada a la m&uacute;sica.
-                    </p>
-                </article>
-            </div>
-        </section>
-
-        <section class="details">
-            <div class="details-card">
-                <h2>Checklist ligero</h2>
-                <p>
-                    Tu sonrisa y ganas de moverte. El resto lo cubro yo: equipamiento, reservas y traslados entre cada parada.
-                </p>
-            </div>
-            <div class="details-card">
-                <h2>C&oacute;digo de vestuario</h2>
-                <p>
-                    Resort elegante: algo c&oacute;modo para el golf y la terraza, con un abrigo fino para el bar de jazz.
-                </p>
-            </div>
-            <div class="details-card">
-                <h2>Nota final</h2>
-                <p>
-                    Dos meses van volando. Sigamos sumando planes como este: simples, elegantes y siempre contigo, Mery.
-                </p>
-                <div class="cta">
-                    <button>Confirmo asistencia</button>
-                    <span>Meryposa, solo dime si paso por ti.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="memories" id="recuerdos">
-            <div class="section-heading">
-                <h2>Galer&iacute;a Meryposa</h2>
-                <p>Peque&ntilde;a selecci&oacute;n de fotos que me recuerdan por qu&eacute; disfruto cada plan a tu lado.</p>
-            </div>
-            <div class="gallery-shell">
-                <div class="gallery-track" id="galleryTrack" aria-label="Recuerdos en carrusel">
-                    <figure class="gallery-item"><img src="FV/foto01.jpg" alt="Foto juntos sonriendo" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto02.jpg" alt="Abrazo en exterior" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto03.jpg" alt="Selfie divertida" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto04.jpg" alt="Escapada de fin de semana" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto05.jpg" alt="Brindis" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto06.jpg" alt="Atardecer juntos" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto07.jpg" alt="Caminata" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto08.jpg" alt="Risa espont&aacute;nea" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto09.jpg" alt="Retrato de Mery" loading="lazy"></figure>
-                    <figure class="gallery-item"><img src="FV/foto10.jpg" alt="Detalle cari&ntilde;oso" loading="lazy"></figure>
-                </div>
-                <div class="gallery-controls" aria-hidden="false">
-                    <button type="button" data-direction="-1" aria-label="Ver fotos anteriores">&#10094;</button>
-                    <button type="button" data-direction="1" aria-label="Ver fotos siguientes">&#10095;</button>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-copy">
-                    <h3>Clip r&aacute;pido</h3>
-                    <p>
-                        Un minuto de recuerdos en movimiento para entrar en modo celebraci&oacute;n. Ma&ntilde;ana seguimos en vivo.
-                    </p>
-                </div>
-                <video controls playsinline preload="metadata">
-                    <source src="FV/video01.mp4" type="video/mp4">
-                    Tu navegador no soporta video HTML5.
-                </video>
-            </div>
-        </section>
-
-        <footer>
-            Nos vemos ma&ntilde;ana, Mery. Paso por ti y arrancamos puntuales a las 19:00.
-        </footer>
+    <main class="viewer">
+        <iframe id="eventFrame" title="Recuerdo" loading="lazy"></iframe>
+        <div class="empty-state is-visible" id="emptyState">
+            <h2>No has abierto ningún recuerdo todavía</h2>
+            <p>Utiliza el menú para elegir uno de los momentos especiales que guardamos aquí.</p>
+        </div>
     </main>
 
-    <div class="lightbox" id="galleryLightbox" aria-hidden="true" role="dialog">
-        <div class="lightbox-content">
-            <button class="lightbox-close" type="button" aria-label="Cerrar galeria">&times;</button>
-            <button class="lightbox-nav prev" type="button" data-direction="-1" aria-label="Foto anterior">&#10094;</button>
-            <img class="lightbox-image" src="" alt="">
-            <button class="lightbox-nav next" type="button" data-direction="1" aria-label="Foto siguiente">&#10095;</button>
-            <div class="lightbox-caption"></div>
-        </div>
-    </div>
+    <section class="overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-hidden="false" aria-labelledby="menuTitle">
+        <article class="overlay-card">
+            <header class="overlay-header">
+                <h1 class="overlay-title" id="menuTitle">Nuestros recuerdos</h1>
+                <p class="overlay-subtitle">Elige el momento que quieras revivir. El de 2 meses ya está listo y aparecerá seleccionado por defecto.</p>
+            </header>
+            <div class="event-list" id="eventList" role="listbox" aria-label="Recuerdos disponibles"></div>
+            <div class="cta-group">
+                <button class="primary" type="button" id="loadEventBtn">Abrir recuerdo</button>
+                <button class="secondary" type="button" id="closeMenuBtn">Cerrar menú</button>
+            </div>
+        </article>
+    </section>
 
     <script>
         (function () {
-            const track = document.getElementById('galleryTrack');
-            const controlButtons = document.querySelectorAll('.gallery-controls button');
-            const galleryImages = track ? Array.from(track.querySelectorAll('img')) : [];
-            let autoScrollId = null;
-
-            const scrollAmount = () => track ? track.clientWidth * 0.9 : 0;
-
-            const stopAutoScroll = () => {
-                if (autoScrollId) {
-                    clearInterval(autoScrollId);
-                    autoScrollId = null;
+            const events = [
+                {
+                    id: '2-meses',
+                    title: '2 meses',
+                    date: 'Viernes 17 de octubre de 2025',
+                    description: 'Celebra nuestro segundo mes exactamente como lo vio ella ese día.',
+                    path: 'events/2-meses.html'
                 }
-            };
+            ];
 
-            const startAutoScroll = () => {
-                if (!track) { return; }
-                stopAutoScroll();
-                autoScrollId = setInterval(() => {
-                    const maxScroll = track.scrollWidth - track.clientWidth;
-                    if (Math.abs(track.scrollLeft - maxScroll) < 4) {
-                        track.scrollTo({ left: 0, behavior: 'smooth' });
-                    } else {
-                        track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
-                    }
-                }, 4000);
-            };
+            const storageKey = 'recuerdoSeleccionado';
+            const frame = document.getElementById('eventFrame');
+            const overlay = document.getElementById('menuOverlay');
+            const eventList = document.getElementById('eventList');
+            const loadButton = document.getElementById('loadEventBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const openMenuBtn = document.getElementById('openMenuBtn');
+            const titleEl = document.getElementById('currentTitle');
+            const dateEl = document.getElementById('currentDate');
+            const emptyState = document.getElementById('emptyState');
 
-            if (track) {
-                controlButtons.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const direction = Number(btn.dataset.direction || 1);
-                        track.scrollBy({ left: scrollAmount() * direction, behavior: 'smooth' });
-                    });
-                });
-                track.addEventListener('pointerenter', stopAutoScroll);
-                track.addEventListener('pointerleave', startAutoScroll);
-                startAutoScroll();
-            } else {
-                controlButtons.forEach(btn => btn.disabled = true);
+            let selectedId = events[0]?.id || null;
+
+            const stored = localStorage.getItem(storageKey);
+            if (stored && events.some(evt => evt.id === stored)) {
+                selectedId = stored;
             }
 
-            const lightbox = document.getElementById('galleryLightbox');
-            if (!lightbox || !galleryImages.length) { return; }
+            const renderOptions = () => {
+                eventList.innerHTML = '';
+                events.forEach((event, index) => {
+                    const option = document.createElement('label');
+                    option.className = 'event-option';
+                    option.setAttribute('data-id', event.id);
+                    option.setAttribute('role', 'option');
 
-            const lightboxImg = lightbox.querySelector('.lightbox-image');
-            const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-            const closeBtn = lightbox.querySelector('.lightbox-close');
-            const navBtns = lightbox.querySelectorAll('.lightbox-nav');
-            let currentIndex = 0;
+                    option.innerHTML = `
+                        <input type="radio" name="memory" value="${event.id}" ${event.id === selectedId || (!selectedId && index === 0) ? 'checked' : ''}>
+                        <div class="event-content">
+                            <span class="event-name">${event.title}</span>
+                            <span class="event-meta">${event.date}</span>
+                            <span class="event-meta">${event.description}</span>
+                        </div>
+                    `;
 
-            const captions = galleryImages.map(img => img.getAttribute('alt') || 'Foto');
+                    option.addEventListener('change', () => {
+                        const input = option.querySelector('input');
+                        if (!input) { return; }
+                        selectedId = input.value;
+                    });
 
-            const showImage = (index) => {
-                if (index < 0) { index = galleryImages.length - 1; }
-                if (index >= galleryImages.length) { index = 0; }
-                currentIndex = index;
-                lightboxImg.src = galleryImages[currentIndex].src;
-                lightboxImg.alt = captions[currentIndex];
-                if (lightboxCaption) {
-                    lightboxCaption.textContent = captions[currentIndex];
-                }
-            };
+                    option.addEventListener('click', (eventClick) => {
+                        const input = option.querySelector('input');
+                        if (!input) { return; }
+                        input.checked = true;
+                        selectedId = input.value;
+                        eventClick.currentTarget.focus();
+                    });
 
-            const openLightbox = (index) => {
-                stopAutoScroll();
-                showImage(index);
-                lightbox.classList.add('is-open');
-                lightbox.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-                closeBtn.focus();
-            };
-
-            const closeLightbox = () => {
-                lightbox.classList.remove('is-open');
-                lightbox.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-                if (track) { startAutoScroll(); }
-            };
-
-            galleryImages.forEach((img, index) => {
-                img.addEventListener('click', () => openLightbox(index));
-                img.addEventListener('keydown', (event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        openLightbox(index);
-                    }
+                    eventList.appendChild(option);
                 });
-                img.setAttribute('tabindex', '0');
-            });
+            };
 
-            closeBtn.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (event) => {
-                if (event.target === lightbox) {
-                    closeLightbox();
+            const findEvent = (id) => events.find(evt => evt.id === id) || null;
+
+            const loadSelectedEvent = () => {
+                const event = findEvent(selectedId) || events[0];
+                if (!event) { return; }
+
+                frame.src = event.path;
+                titleEl.textContent = event.title;
+                dateEl.textContent = event.date;
+                emptyState.classList.remove('is-visible');
+
+                localStorage.setItem(storageKey, event.id);
+                hideOverlay();
+            };
+
+            const showOverlay = () => {
+                overlay.setAttribute('aria-hidden', 'false');
+            };
+
+            const hideOverlay = () => {
+                overlay.setAttribute('aria-hidden', 'true');
+            };
+
+            loadButton.addEventListener('click', loadSelectedEvent);
+            closeMenuBtn.addEventListener('click', hideOverlay);
+            openMenuBtn.addEventListener('click', showOverlay);
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    hideOverlay();
                 }
             });
 
-            navBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const direction = Number(btn.dataset.direction || 1);
-                    showImage(currentIndex + direction);
-                });
-            });
-
-            window.addEventListener('keydown', (event) => {
-                if (!lightbox.classList.contains('is-open')) { return; }
-                if (event.key === 'Escape') { closeLightbox(); }
-                if (event.key === 'ArrowRight') { showImage(currentIndex + 1); }
-                if (event.key === 'ArrowLeft') { showImage(currentIndex - 1); }
-            });
+            renderOptions();
+            showOverlay();
+            const defaultEvent = findEvent(selectedId);
+            if (defaultEvent) {
+                frame.src = defaultEvent.path;
+                titleEl.textContent = defaultEvent.title;
+                dateEl.textContent = defaultEvent.date;
+                emptyState.classList.remove('is-visible');
+            }
         })();
     </script>
 </body>
 </html>
-

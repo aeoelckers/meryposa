@@ -1,0 +1,685 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mery, viernes 17</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: linear-gradient(140deg, #f6f5f2 0%, #eef4f6 100%);
+            --panel: rgba(255, 255, 255, 0.82);
+            --surface: rgba(255, 255, 255, 0.94);
+            --accent: #2f8f9d;
+            --accent-soft: rgba(47, 143, 157, 0.12);
+            --accent-warm: #f2b880;
+            --text-main: #2b3137;
+            --text-soft: #5a6672;
+            --border: rgba(220, 228, 233, 0.9);
+            --shadow: 0 20px 48px rgba(182, 193, 204, 0.35);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            font-family: 'Poppins', Arial, sans-serif;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: clamp(20px, 5vw, 48px);
+        }
+
+        .invitation {
+            width: min(1024px, 100%);
+            background: var(--panel);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            position: relative;
+            padding: clamp(48px, 9vw, 120px) clamp(32px, 8vw, 96px);
+            display: grid;
+            gap: clamp(18px, 4vw, 28px);
+            color: #fff;
+            background-image: linear-gradient(120deg, rgba(47, 143, 157, 0.78), rgba(48, 62, 77, 0.55)), url('FV/foto09.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 24px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            text-transform: uppercase;
+            letter-spacing: 0.28em;
+            font-weight: 500;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.5rem, 8vw, 3.9rem);
+            line-height: 1.05;
+            font-weight: 600;
+        }
+
+        .intro {
+            max-width: 540px;
+            font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.82);
+            font-weight: 400;
+        }
+
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.12em;
+            font-weight: 600;
+        }
+
+        section { padding: clamp(36px, 7vw, 72px); }
+
+        .timeline { background: rgba(255, 255, 255, 0.65); }
+
+        .timeline-grid {
+            display: grid;
+            gap: clamp(20px, 3.5vw, 32px);
+        }
+
+        .timeline-item {
+            background: var(--surface);
+            border-radius: 22px;
+            padding: clamp(24px, 5vw, 34px);
+            border: 1px solid var(--border);
+            box-shadow: 0 16px 32px rgba(185, 198, 207, 0.35);
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 55%, var(--accent-soft));
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .timeline-item:hover::after { opacity: 1; }
+
+        .time {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .time span {
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .activity {
+            margin-top: 16px;
+            font-size: clamp(1.35rem, 4vw, 1.8rem);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 500;
+        }
+
+        .description {
+            margin-top: 12px;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        .details {
+            background: rgba(255, 255, 255, 0.72);
+            display: grid;
+            gap: clamp(24px, 4vw, 34px);
+        }
+
+        .details-card {
+            background: var(--surface);
+            border-radius: 22px;
+            padding: clamp(24px, 5vw, 34px);
+            border: 1px solid var(--border);
+            box-shadow: 0 18px 32px rgba(188, 198, 208, 0.34);
+        }
+
+        .details-card h2 {
+            margin: 0;
+            font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--accent);
+        }
+
+        .details-card p {
+            margin: 14px 0 0;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        .cta {
+            margin-top: clamp(18px, 4vw, 26px);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .cta button {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(120deg, var(--accent), #3caab5);
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 18px 32px rgba(47, 143, 157, 0.32);
+        }
+
+        .cta button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 40px rgba(47, 143, 157, 0.38);
+        }
+
+        .cta span { color: var(--text-soft); font-weight: 500; }
+
+        .memories { background: rgba(255, 255, 255, 0.78); }
+
+        .section-heading {
+            text-align: center;
+            display: grid;
+            gap: 16px;
+            margin-bottom: clamp(30px, 5vw, 48px);
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.9rem, 5vw, 2.5rem);
+            color: var(--accent);
+        }
+
+        .section-heading p {
+            margin: 0 auto;
+            max-width: 540px;
+            color: var(--text-soft);
+        }
+
+        .gallery-shell {
+            position: relative;
+            display: grid;
+            gap: clamp(18px, 4vw, 28px);
+        }
+
+        .gallery-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(180px, 1fr);
+            gap: clamp(16px, 3vw, 24px);
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .gallery-track::-webkit-scrollbar { display: none; }
+
+        .gallery-item {
+            scroll-snap-align: center;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #f7f9fa;
+            box-shadow: 0 18px 30px rgba(188, 196, 205, 0.3);
+            aspect-ratio: 4 / 5;
+            position: relative;
+        }
+
+        .gallery-item::after {\n            content: "";\n            position: absolute;\n            inset: 0;\n            background: linear-gradient(140deg, transparent, rgba(47, 143, 157, 0.14));\n            opacity: 0;\n            transition: opacity 0.3s ease;\n            pointer-events: none;\n        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item img:focus {
+            outline: 3px solid rgba(47, 143, 157, 0.4);
+            outline-offset: 4px;
+        }
+
+        .gallery-item:hover img { transform: scale(1.04); }
+
+        .gallery-item:hover::after { opacity: 1; }
+
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .gallery-controls button {
+            width: 48px;
+            height: 48px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 24px rgba(186, 194, 205, 0.32);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .gallery-controls button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 32px rgba(186, 194, 205, 0.36);
+        }
+
+        .video-card {
+            margin-top: clamp(38px, 6vw, 56px);
+            display: grid;
+            gap: clamp(22px, 4vw, 30px);
+            align-items: center;
+            background: var(--surface);
+            border-radius: 24px;
+            padding: clamp(26px, 5vw, 38px);
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 36px rgba(188, 198, 208, 0.35);
+        }
+
+        .video-copy h3 {
+            margin: 0;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.45rem, 4vw, 1.9rem);
+            color: var(--accent);
+        }
+
+        .video-copy p {
+            margin: 10px 0 0;
+            color: var(--text-soft);
+            line-height: 1.6;
+        }
+
+        .video-card video {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: #0f1418;
+            box-shadow: 0 20px 36px rgba(152, 163, 175, 0.32);
+        }
+
+        footer {
+            padding: clamp(26px, 5vw, 40px);
+            text-align: center;
+            font-size: 0.98rem;
+            color: var(--text-soft);
+            background: rgba(255, 255, 255, 0.68);
+            border-top: 1px solid var(--border);
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 22, 32, 0.82);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(24px, 6vw, 60px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 40;
+        }
+
+        .lightbox.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: min(860px, 100%);
+            width: 100%;
+            display: grid;
+            gap: 16px;
+            justify-items: center;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            box-shadow: 0 28px 45px rgba(0, 0, 0, 0.4);
+            background: #000;
+        }
+
+        .lightbox-caption {
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: none;
+            background: rgba(15, 22, 32, 0.75);
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border-radius: 999px;
+            border: none;
+            background: rgba(15, 22, 32, 0.7);
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav.prev { left: -18px; }
+        .lightbox-nav.next { right: -18px; }
+
+        @media (max-width: 640px) {
+            .lightbox-close { top: -10px; right: -10px; }
+            .lightbox-nav.prev { left: 6px; }
+            .lightbox-nav.next { right: 6px; }
+            .lightbox-nav { background: rgba(15, 22, 32, 0.55); }
+        }
+
+        @media (min-width: 768px) {
+            .timeline-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .details-card:last-child { grid-column: span 2; }
+        }
+
+        @media (min-width: 992px) {
+            .video-card { grid-template-columns: 1.05fr 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <main class="invitation">
+        <header>
+            <div class="subtitle">Meryposa agenda</div>
+            <h1>Viernes 17 de octubre</h1>
+            <p class="intro">
+                Mery, arm&eacute; una tarde para que solo nos dediquemos a disfrutar. Golf suave, terraza con vista y cierre con jazz. Nada de apuros, solo nuestro ritmo.
+            </p>
+            <div class="date-badge">19:00 &bull; Sport Fran&ccedil;ais &bull; Santiago</div>
+        </header>
+
+        <section class="timeline">
+            <div class="timeline-grid">
+                <article class="timeline-item">
+                    <div class="time"><span>19:00</span> Sport Fran&ccedil;ais</div>
+                    <div class="activity">Golf al atardecer</div>
+                    <p class="description">
+                        Primer bloque relajado para conversar y golpear un par de tiros con luz dorada. Tengo los horarios reservados.
+                    </p>
+                </article>
+                <article class="timeline-item">
+                    <div class="time"><span>20:15</span> Terraza privada</div>
+                    <div class="activity">Coctel frente a la ca&iacute;da del sol</div>
+                    <p class="description">
+                        Mesa lista, algo fresco para picar y playlist liviana. Ideal para seguir sumando historias sin distracciones.
+                    </p>
+                </article>
+                <article class="timeline-item">
+                    <div class="time"><span>22:00</span> Thelonious Bar</div>
+                    <div class="activity">Jazz y cierre tranquilo</div>
+                    <p class="description">
+                        Butacas reservadas para escuchar la banda. Copas suaves y la noche entregada a la m&uacute;sica.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="details">
+            <div class="details-card">
+                <h2>Checklist ligero</h2>
+                <p>
+                    Tu sonrisa y ganas de moverte. El resto lo cubro yo: equipamiento, reservas y traslados entre cada parada.
+                </p>
+            </div>
+            <div class="details-card">
+                <h2>C&oacute;digo de vestuario</h2>
+                <p>
+                    Resort elegante: algo c&oacute;modo para el golf y la terraza, con un abrigo fino para el bar de jazz.
+                </p>
+            </div>
+            <div class="details-card">
+                <h2>Nota final</h2>
+                <p>
+                    Dos meses van volando. Sigamos sumando planes como este: simples, elegantes y siempre contigo, Mery.
+                </p>
+                <div class="cta">
+                    <button>Confirmo asistencia</button>
+                    <span>Meryposa, solo dime si paso por ti.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="memories" id="recuerdos">
+            <div class="section-heading">
+                <h2>Galer&iacute;a Meryposa</h2>
+                <p>Peque&ntilde;a selecci&oacute;n de fotos que me recuerdan por qu&eacute; disfruto cada plan a tu lado.</p>
+            </div>
+            <div class="gallery-shell">
+                <div class="gallery-track" id="galleryTrack" aria-label="Recuerdos en carrusel">
+                    <figure class="gallery-item"><img src="../FV/foto01.jpg" alt="Foto juntos sonriendo" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto02.jpg" alt="Abrazo en exterior" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto03.jpg" alt="Selfie divertida" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto04.jpg" alt="Escapada de fin de semana" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto05.jpg" alt="Brindis" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto06.jpg" alt="Atardecer juntos" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto07.jpg" alt="Caminata" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto08.jpg" alt="Risa espont&aacute;nea" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto09.jpg" alt="Retrato de Mery" loading="lazy"></figure>
+                    <figure class="gallery-item"><img src="../FV/foto10.jpg" alt="Detalle cari&ntilde;oso" loading="lazy"></figure>
+                </div>
+                <div class="gallery-controls" aria-hidden="false">
+                    <button type="button" data-direction="-1" aria-label="Ver fotos anteriores">&#10094;</button>
+                    <button type="button" data-direction="1" aria-label="Ver fotos siguientes">&#10095;</button>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-copy">
+                    <h3>Clip r&aacute;pido</h3>
+                    <p>
+                        Un minuto de recuerdos en movimiento para entrar en modo celebraci&oacute;n. Ma&ntilde;ana seguimos en vivo.
+                    </p>
+                </div>
+                <video controls playsinline preload="metadata">
+                    <source src="../FV/video01.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+        </section>
+
+        <footer>
+            Nos vemos ma&ntilde;ana, Mery. Paso por ti y arrancamos puntuales a las 19:00.
+        </footer>
+    </main>
+
+    <div class="lightbox" id="galleryLightbox" aria-hidden="true" role="dialog">
+        <div class="lightbox-content">
+            <button class="lightbox-close" type="button" aria-label="Cerrar galeria">&times;</button>
+            <button class="lightbox-nav prev" type="button" data-direction="-1" aria-label="Foto anterior">&#10094;</button>
+            <img class="lightbox-image" src="" alt="">
+            <button class="lightbox-nav next" type="button" data-direction="1" aria-label="Foto siguiente">&#10095;</button>
+            <div class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const track = document.getElementById('galleryTrack');
+            const controlButtons = document.querySelectorAll('.gallery-controls button');
+            const galleryImages = track ? Array.from(track.querySelectorAll('img')) : [];
+            let autoScrollId = null;
+
+            const scrollAmount = () => track ? track.clientWidth * 0.9 : 0;
+
+            const stopAutoScroll = () => {
+                if (autoScrollId) {
+                    clearInterval(autoScrollId);
+                    autoScrollId = null;
+                }
+            };
+
+            const startAutoScroll = () => {
+                if (!track) { return; }
+                stopAutoScroll();
+                autoScrollId = setInterval(() => {
+                    const maxScroll = track.scrollWidth - track.clientWidth;
+                    if (Math.abs(track.scrollLeft - maxScroll) < 4) {
+                        track.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+                    }
+                }, 4000);
+            };
+
+            if (track) {
+                controlButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const direction = Number(btn.dataset.direction || 1);
+                        track.scrollBy({ left: scrollAmount() * direction, behavior: 'smooth' });
+                    });
+                });
+                track.addEventListener('pointerenter', stopAutoScroll);
+                track.addEventListener('pointerleave', startAutoScroll);
+                startAutoScroll();
+            } else {
+                controlButtons.forEach(btn => btn.disabled = true);
+            }
+
+            const lightbox = document.getElementById('galleryLightbox');
+            if (!lightbox || !galleryImages.length) { return; }
+
+            const lightboxImg = lightbox.querySelector('.lightbox-image');
+            const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const navBtns = lightbox.querySelectorAll('.lightbox-nav');
+            let currentIndex = 0;
+
+            const captions = galleryImages.map(img => img.getAttribute('alt') || 'Foto');
+
+            const showImage = (index) => {
+                if (index < 0) { index = galleryImages.length - 1; }
+                if (index >= galleryImages.length) { index = 0; }
+                currentIndex = index;
+                lightboxImg.src = galleryImages[currentIndex].src;
+                lightboxImg.alt = captions[currentIndex];
+                if (lightboxCaption) {
+                    lightboxCaption.textContent = captions[currentIndex];
+                }
+            };
+
+            const openLightbox = (index) => {
+                stopAutoScroll();
+                showImage(index);
+                lightbox.classList.add('is-open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                closeBtn.focus();
+            };
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('is-open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                if (track) { startAutoScroll(); }
+            };
+
+            galleryImages.forEach((img, index) => {
+                img.addEventListener('click', () => openLightbox(index));
+                img.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        openLightbox(index);
+                    }
+                });
+                img.setAttribute('tabindex', '0');
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const direction = Number(btn.dataset.direction || 1);
+                    showImage(currentIndex + direction);
+                });
+            });
+
+            window.addEventListener('keydown', (event) => {
+                if (!lightbox.classList.contains('is-open')) { return; }
+                if (event.key === 'Escape') { closeLightbox(); }
+                if (event.key === 'ArrowRight') { showImage(currentIndex + 1); }
+                if (event.key === 'ArrowLeft') { showImage(currentIndex - 1); }
+            });
+        })();
+    </script>
+</body>
+</html>
+
