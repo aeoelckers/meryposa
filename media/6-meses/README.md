@@ -12,6 +12,24 @@ python scripts/generate-6-meses-manifest.py
 
 4. Listo: `events/6-meses.html` usará automáticamente los archivos detectados.
 
+
+## ¿Carpeta o fotos separadas?
+
+- **Déjalas como fotos/videos separados** dentro de `media/6-meses/`.
+- No necesitas renombrar ni ordenar manualmente.
+- **No uses subcarpetas** (por ejemplo `media/6-meses/viaje/`), porque el script solo lee archivos en el nivel principal de `media/6-meses/`.
+
+Ejemplo correcto:
+- `media/6-meses/IMG_0011.jpg`
+- `media/6-meses/20260209_163247.jpg`
+- `media/6-meses/IMG_0011.mov`
+
+Luego ejecuta:
+
+```bash
+python scripts/generate-6-meses-manifest.py
+```
+
 ## Formatos recomendados
 
 ### Fotos
