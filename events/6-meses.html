@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mery, 6 meses - 22 de mayo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: linear-gradient(140deg, #f4f6fb 0%, #edf5f6 100%);
+            --panel: rgba(255, 255, 255, 0.85);
+            --surface: rgba(255, 255, 255, 0.95);
+            --accent: #2f8f9d;
+            --accent-soft: rgba(47, 143, 157, 0.12);
+            --text-main: #2b3137;
+            --text-soft: #5a6672;
+            --border: rgba(220, 228, 233, 0.9);
+            --shadow: 0 20px 48px rgba(182, 193, 204, 0.35);
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            font-family: 'Poppins', Arial, sans-serif;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: clamp(20px, 5vw, 48px);
+        }
+        .invitation {
+            width: min(1024px, 100%);
+            background: var(--panel);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        header {
+            padding: clamp(48px, 9vw, 110px) clamp(32px, 8vw, 96px);
+            display: grid;
+            gap: clamp(16px, 3vw, 26px);
+            color: #fff;
+            background-image: linear-gradient(120deg, rgba(47, 143, 157, 0.78), rgba(48, 62, 77, 0.58)), url('../FV/foto08.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: 500;
+        }
+        h1 {
+            margin: 0;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.2rem, 7vw, 3.7rem);
+            line-height: 1.08;
+            font-weight: 600;
+        }
+        .intro { max-width: 560px; color: rgba(255,255,255,.86); }
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.25);
+            letter-spacing: .09em;
+            font-weight: 600;
+        }
+        section { padding: clamp(34px, 7vw, 70px); }
+        .timeline { background: rgba(255,255,255,0.68); }
+        .timeline-grid { display: grid; gap: clamp(18px, 3.5vw, 30px); }
+        .timeline-item {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: clamp(20px, 4vw, 30px);
+            border: 1px solid var(--border);
+            box-shadow: 0 14px 30px rgba(185, 198, 207, 0.3);
+        }
+        .time { text-transform: uppercase; letter-spacing: .16em; color: var(--accent); font-weight: 600; }
+        .activity { margin-top: 12px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.3rem, 4vw, 1.7rem); }
+        .description { color: var(--text-soft); line-height: 1.7; }
+        .details { background: rgba(255,255,255,.75); display: grid; gap: 22px; }
+        .details-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: clamp(20px, 4vw, 30px); }
+        .details-card h2 { margin: 0; color: var(--accent); }
+        .details-card p { margin-bottom: 0; color: var(--text-soft); line-height: 1.6; }
+
+        .section-heading { text-align: center; margin-bottom: 30px; }
+        .section-heading h2 { margin-bottom: 10px; color: var(--accent); }
+        .section-heading p { margin: 0 auto; max-width: 560px; color: var(--text-soft); }
+
+        .gallery-grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            aspect-ratio: 4/5;
+            background: #f4f7f9;
+            box-shadow: 0 12px 24px rgba(188, 196, 205, 0.3);
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .media-note {
+            margin-top: 18px;
+            border-left: 4px solid var(--accent);
+            background: #f8fcfd;
+            padding: 14px 16px;
+            color: var(--text-soft);
+            border-radius: 10px;
+            font-size: .95rem;
+        }
+        .video-card {
+            margin-top: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: 0 14px 30px rgba(188, 198, 208, 0.3);
+        }
+        .video-card video { width: 100%; border-radius: 14px; border: 1px solid var(--border); background: #10151a; }
+
+        footer {
+            padding: 28px;
+            text-align: center;
+            color: var(--text-soft);
+            background: rgba(255,255,255,.72);
+            border-top: 1px solid var(--border);
+        }
+        @media (min-width: 768px) {
+            .timeline-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+            .details { grid-template-columns: repeat(2, minmax(0,1fr)); }
+            .details-card:last-child { grid-column: span 2; }
+        }
+    </style>
+</head>
+<body>
+    <main class="invitation">
+        <header>
+            <div class="subtitle">Meryposa · 6 meses</div>
+            <h1>Viernes 22 de mayo de 2026</h1>
+            <p class="intro">
+                Esta es nuestra invitación oficial para celebrar 6 meses juntos. Un plan elegante y suave, pensado para disfrutar el día completo contigo.
+            </p>
+            <div class="date-badge">22/05/2026 · Celebración de 6 meses · Santiago</div>
+        </header>
+
+        <section class="timeline">
+            <div class="timeline-grid">
+                <article class="timeline-item">
+                    <div class="time">18:30 · Encuentro</div>
+                    <div class="activity">Brindis de inicio</div>
+                    <p class="description">Arrancamos con algo rico para brindar por estos seis meses y tomar las primeras fotos de la noche.</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="time">20:00 · Cena especial</div>
+                    <div class="activity">Mesa reservada</div>
+                    <p class="description">Cena tranquila en un lugar con ambiente íntimo, música suave y tiempo para conversar sin apuros.</p>
+                </article>
+                <article class="timeline-item">
+                    <div class="time">22:30 · Cierre</div>
+                    <div class="activity">Postre y paseo</div>
+                    <p class="description">Cerramos caminando y celebrando nuestro camino juntos, con una sorpresa final preparada para ti.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="details">
+            <div class="details-card">
+                <h2>Invitación del evento</h2>
+                <p>Fecha confirmada: viernes <strong>22 de mayo de 2026</strong>. Reserva el día para celebrarlo juntos.</p>
+            </div>
+            <div class="details-card">
+                <h2>Dress code</h2>
+                <p>Elegante y cómodo. Algo que te haga sentir linda para fotos, brindis y paseo nocturno.</p>
+            </div>
+            <div class="details-card">
+                <h2>Confirmación</h2>
+                <p>Tu presencia es lo más importante. Yo me encargo de reservas, traslados y detalles.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <h2>Galería 6 meses</h2>
+                <p>Aquí se mostrarán tus fotos específicas de 6 meses. Puedes reemplazar cada archivo manteniendo los nombres.</p>
+            </div>
+
+            <div class="gallery-grid" aria-label="Galería 6 meses">
+                <figure class="gallery-item"><img src="../media/6-meses/foto01.jpg" data-fallback="../FV/foto01.jpg" alt="Recuerdo 1 de seis meses" loading="lazy"></figure>
+                <figure class="gallery-item"><img src="../media/6-meses/foto02.jpg" data-fallback="../FV/foto02.jpg" alt="Recuerdo 2 de seis meses" loading="lazy"></figure>
+                <figure class="gallery-item"><img src="../media/6-meses/foto03.jpg" data-fallback="../FV/foto03.jpg" alt="Recuerdo 3 de seis meses" loading="lazy"></figure>
+                <figure class="gallery-item"><img src="../media/6-meses/foto04.jpg" data-fallback="../FV/foto04.jpg" alt="Recuerdo 4 de seis meses" loading="lazy"></figure>
+                <figure class="gallery-item"><img src="../media/6-meses/foto05.jpg" data-fallback="../FV/foto05.jpg" alt="Recuerdo 5 de seis meses" loading="lazy"></figure>
+                <figure class="gallery-item"><img src="../media/6-meses/foto06.jpg" data-fallback="../FV/foto06.jpg" alt="Recuerdo 6 de seis meses" loading="lazy"></figure>
+            </div>
+
+            <div class="media-note">
+                Ruta recomendada para tus fotos: <strong>media/6-meses/</strong> usando nombres <code>foto01.jpg</code> a <code>foto06.jpg</code>.
+                Si todavía no existen, la página usa fotos de respaldo automáticamente.
+            </div>
+
+            <div class="video-card">
+                <h3>Video para la invitación</h3>
+                <p>Puedes agregar tu video en <code>media/6-meses/video01.mp4</code>.</p>
+                <video controls playsinline preload="metadata" id="video6Meses">
+                    <source src="../media/6-meses/video01.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+        </section>
+
+        <footer>
+            Invitación especial creada para nuestro evento del 22 de mayo de 2026 💛
+        </footer>
+    </main>
+
+    <script>
+        (function () {
+            document.querySelectorAll('img[data-fallback]').forEach((img) => {
+                img.addEventListener('error', () => {
+                    if (img.dataset.fallback && img.src !== img.dataset.fallback) {
+                        img.src = img.dataset.fallback;
+                    }
+                }, { once: true });
+            });
+
+            const video = document.getElementById('video6Meses');
+            if (video) {
+                video.addEventListener('error', () => {
+                    const source = video.querySelector('source');
+                    if (!source) { return; }
+                    source.src = '../FV/video01.mp4';
+                    video.load();
+                }, { once: true });
+            }
+        })();
+    </script>
+</body>
+</html>
