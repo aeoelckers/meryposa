@@ -1,17 +1,28 @@
 # Media para sección 6 meses
 
-Coloca aquí tus archivos personalizados para el evento **6 meses**.
+Si tus fotos están en Google Drive, este flujo es el más simple:
 
-## Fotos
-- `foto01.jpg`
-- `foto02.jpg`
-- `foto03.jpg`
-- `foto04.jpg`
-- `foto05.jpg`
-- `foto06.jpg`
+1. Descarga la carpeta desde Drive al computador.
+2. Copia/pega todas las fotos y videos dentro de `media/6-meses/`.
+3. Ejecuta:
 
-## Video
-- `video01.mp4`
+```bash
+python scripts/generate-6-meses-manifest.py
+```
 
-La página `events/6-meses.html` ya está configurada para leer estos nombres.
-Si alguna foto/video no existe todavía, se usará un fallback de la carpeta `FV/`.
+4. Listo: `events/6-meses.html` usará automáticamente los archivos detectados.
+
+## Formatos recomendados
+
+### Fotos
+- `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`
+
+### Video
+- `.mp4` (ideal), `.webm`, `.mov`
+
+> Nota: archivos `.HEIC` normalmente no se muestran en navegador sin conversión. Conviene exportarlos a `.jpg`.
+
+## Archivos generados
+- `manifest.json` (lo crea/actualiza el script y contiene la lista de imágenes/video).
+
+Si no hay media personalizada o falta algo, la página hace fallback a `FV/`.

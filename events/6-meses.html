@@ -19,7 +19,9 @@
             --border: rgba(220, 228, 233, 0.9);
             --shadow: 0 20px 48px rgba(182, 193, 204, 0.35);
         }
+
         *, *::before, *::after { box-sizing: border-box; }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -30,6 +32,7 @@
             justify-content: center;
             padding: clamp(20px, 5vw, 48px);
         }
+
         .invitation {
             width: min(1024px, 100%);
             background: var(--panel);
@@ -38,6 +41,7 @@
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
         }
+
         header {
             padding: clamp(48px, 9vw, 110px) clamp(32px, 8vw, 96px);
             display: grid;
@@ -47,12 +51,14 @@
             background-size: cover;
             background-position: center;
         }
+
         .subtitle {
             font-size: clamp(1rem, 2.5vw, 1.2rem);
             text-transform: uppercase;
             letter-spacing: 0.25em;
             font-weight: 500;
         }
+
         h1 {
             margin: 0;
             font-family: 'Playfair Display', Georgia, serif;
@@ -60,20 +66,25 @@
             line-height: 1.08;
             font-weight: 600;
         }
-        .intro { max-width: 560px; color: rgba(255,255,255,.86); }
+
+        .intro { max-width: 560px; color: rgba(255, 255, 255, .86); }
+
         .date-badge {
             display: inline-flex;
             align-items: center;
             gap: 14px;
             padding: 14px 24px;
             border-radius: 999px;
-            background: rgba(255,255,255,.25);
+            background: rgba(255, 255, 255, .25);
             letter-spacing: .09em;
             font-weight: 600;
         }
+
         section { padding: clamp(34px, 7vw, 70px); }
-        .timeline { background: rgba(255,255,255,0.68); }
+
+        .timeline { background: rgba(255, 255, 255, 0.68); }
         .timeline-grid { display: grid; gap: clamp(18px, 3.5vw, 30px); }
+
         .timeline-item {
             background: var(--surface);
             border-radius: 20px;
@@ -81,10 +92,12 @@
             border: 1px solid var(--border);
             box-shadow: 0 14px 30px rgba(185, 198, 207, 0.3);
         }
+
         .time { text-transform: uppercase; letter-spacing: .16em; color: var(--accent); font-weight: 600; }
         .activity { margin-top: 12px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.3rem, 4vw, 1.7rem); }
         .description { color: var(--text-soft); line-height: 1.7; }
-        .details { background: rgba(255,255,255,.75); display: grid; gap: 22px; }
+
+        .details { background: rgba(255, 255, 255, .75); display: grid; gap: 22px; }
         .details-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: clamp(20px, 4vw, 30px); }
         .details-card h2 { margin: 0; color: var(--accent); }
         .details-card p { margin-bottom: 0; color: var(--text-soft); line-height: 1.6; }
@@ -98,6 +111,7 @@
             gap: 14px;
             grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
         }
+
         .gallery-item {
             overflow: hidden;
             border-radius: 16px;
@@ -105,8 +119,20 @@
             aspect-ratio: 4/5;
             background: #f4f7f9;
             box-shadow: 0 12px 24px rgba(188, 196, 205, 0.3);
+            position: relative;
         }
+
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        .gallery-empty {
+            border: 1px dashed var(--border);
+            border-radius: 16px;
+            padding: 22px;
+            color: var(--text-soft);
+            background: #f8fcfd;
+            text-align: center;
+        }
+
         .media-note {
             margin-top: 18px;
             border-left: 4px solid var(--accent);
@@ -116,6 +142,7 @@
             border-radius: 10px;
             font-size: .95rem;
         }
+
         .video-card {
             margin-top: 30px;
             background: var(--surface);
@@ -124,18 +151,20 @@
             padding: 22px;
             box-shadow: 0 14px 30px rgba(188, 198, 208, 0.3);
         }
+
         .video-card video { width: 100%; border-radius: 14px; border: 1px solid var(--border); background: #10151a; }
 
         footer {
             padding: 28px;
             text-align: center;
             color: var(--text-soft);
-            background: rgba(255,255,255,.72);
+            background: rgba(255, 255, 255, .72);
             border-top: 1px solid var(--border);
         }
+
         @media (min-width: 768px) {
-            .timeline-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
-            .details { grid-template-columns: repeat(2, minmax(0,1fr)); }
+            .timeline-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .details-card:last-child { grid-column: span 2; }
         }
     </style>
@@ -189,26 +218,19 @@
         <section>
             <div class="section-heading">
                 <h2>Galería 6 meses</h2>
-                <p>Aquí se mostrarán tus fotos específicas de 6 meses. Puedes reemplazar cada archivo manteniendo los nombres.</p>
+                <p>Carga tu carpeta de Google Drive en <code>media/6-meses/</code>, corre el generador y la galería se arma sola.</p>
             </div>
 
-            <div class="gallery-grid" aria-label="Galería 6 meses">
-                <figure class="gallery-item"><img src="../media/6-meses/foto01.jpg" data-fallback="../FV/foto01.jpg" alt="Recuerdo 1 de seis meses" loading="lazy"></figure>
-                <figure class="gallery-item"><img src="../media/6-meses/foto02.jpg" data-fallback="../FV/foto02.jpg" alt="Recuerdo 2 de seis meses" loading="lazy"></figure>
-                <figure class="gallery-item"><img src="../media/6-meses/foto03.jpg" data-fallback="../FV/foto03.jpg" alt="Recuerdo 3 de seis meses" loading="lazy"></figure>
-                <figure class="gallery-item"><img src="../media/6-meses/foto04.jpg" data-fallback="../FV/foto04.jpg" alt="Recuerdo 4 de seis meses" loading="lazy"></figure>
-                <figure class="gallery-item"><img src="../media/6-meses/foto05.jpg" data-fallback="../FV/foto05.jpg" alt="Recuerdo 5 de seis meses" loading="lazy"></figure>
-                <figure class="gallery-item"><img src="../media/6-meses/foto06.jpg" data-fallback="../FV/foto06.jpg" alt="Recuerdo 6 de seis meses" loading="lazy"></figure>
-            </div>
+            <div class="gallery-grid" id="galleryGrid" aria-label="Galería 6 meses"></div>
 
             <div class="media-note">
-                Ruta recomendada para tus fotos: <strong>media/6-meses/</strong> usando nombres <code>foto01.jpg</code> a <code>foto06.jpg</code>.
-                Si todavía no existen, la página usa fotos de respaldo automáticamente.
+                Flujo recomendado: descarga la carpeta desde Drive → pega archivos en <strong>media/6-meses/</strong> → ejecuta
+                <code>python scripts/generate-6-meses-manifest.py</code>.
             </div>
 
             <div class="video-card">
                 <h3>Video para la invitación</h3>
-                <p>Puedes agregar tu video en <code>media/6-meses/video01.mp4</code>.</p>
+                <p>El video principal se toma desde el manifest. Si no hay, usa <code>media/6-meses/video01.mp4</code> y luego fallback a <code>FV/video01.mp4</code>.</p>
                 <video controls playsinline preload="metadata" id="video6Meses">
                     <source src="../media/6-meses/video01.mp4" type="video/mp4">
                     Tu navegador no soporta video HTML5.
@@ -223,23 +245,78 @@
 
     <script>
         (function () {
-            document.querySelectorAll('img[data-fallback]').forEach((img) => {
-                img.addEventListener('error', () => {
-                    if (img.dataset.fallback && img.src !== img.dataset.fallback) {
-                        img.src = img.dataset.fallback;
+            const manifestPath = '../media/6-meses/manifest.json';
+            const galleryGrid = document.getElementById('galleryGrid');
+            const video = document.getElementById('video6Meses');
+            const defaultFallbackImages = [
+                '../FV/foto01.jpg',
+                '../FV/foto02.jpg',
+                '../FV/foto03.jpg',
+                '../FV/foto04.jpg',
+                '../FV/foto05.jpg',
+                '../FV/foto06.jpg'
+            ];
+
+            const fallbackVideo = '../FV/video01.mp4';
+
+            const renderGallery = (images) => {
+                if (!galleryGrid) { return; }
+
+                const safeImages = Array.isArray(images) && images.length
+                    ? images
+                    : defaultFallbackImages;
+
+                galleryGrid.innerHTML = '';
+
+                safeImages.forEach((src, index) => {
+                    const figure = document.createElement('figure');
+                    figure.className = 'gallery-item';
+
+                    const img = document.createElement('img');
+                    img.loading = 'lazy';
+                    img.alt = `Recuerdo ${index + 1} de seis meses`;
+                    img.src = src;
+                    img.addEventListener('error', () => {
+                        if (src !== defaultFallbackImages[index % defaultFallbackImages.length]) {
+                            img.src = defaultFallbackImages[index % defaultFallbackImages.length];
+                        }
+                    }, { once: true });
+
+                    figure.appendChild(img);
+                    galleryGrid.appendChild(figure);
+                });
+            };
+
+            const setVideoSource = (videoSrc) => {
+                if (!video) { return; }
+                const source = video.querySelector('source');
+                if (!source) { return; }
+                source.src = videoSrc || '../media/6-meses/video01.mp4';
+                video.load();
+
+                video.addEventListener('error', () => {
+                    if (source.src !== fallbackVideo) {
+                        source.src = fallbackVideo;
+                        video.load();
                     }
                 }, { once: true });
-            });
+            };
 
-            const video = document.getElementById('video6Meses');
-            if (video) {
-                video.addEventListener('error', () => {
-                    const source = video.querySelector('source');
-                    if (!source) { return; }
-                    source.src = '../FV/video01.mp4';
-                    video.load();
-                }, { once: true });
-            }
+            fetch(manifestPath)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Manifest no disponible');
+                    }
+                    return response.json();
+                })
+                .then((manifest) => {
+                    renderGallery(manifest.images);
+                    setVideoSource(manifest.video);
+                })
+                .catch(() => {
+                    renderGallery([]);
+                    setVideoSource('../media/6-meses/video01.mp4');
+                });
         })();
     </script>
 </body>
