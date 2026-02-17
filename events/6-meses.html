@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mery, 6 meses - 22 de mayo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: linear-gradient(145deg, #f4f6fb 0%, #edf6f6 100%);
+            --panel: rgba(255, 255, 255, 0.88);
+            --surface: rgba(255, 255, 255, 0.96);
+            --accent: #2f8f9d;
+            --text-main: #2b3137;
+            --text-soft: #5a6672;
+            --border: rgba(220, 228, 233, 0.95);
+            --shadow: 0 18px 36px rgba(182, 193, 204, 0.32);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', Arial, sans-serif;
+            padding: clamp(20px, 4vw, 44px);
+        }
+
+        .page {
+            width: min(1040px, 100%);
+            margin: 0 auto;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            position: relative;
+            color: #fff;
+            padding: clamp(42px, 9vw, 90px) clamp(24px, 7vw, 76px);
+            background: linear-gradient(120deg, rgba(47, 143, 157, 0.75), rgba(40, 56, 71, 0.52)), url('../FV/foto08.jpg') center/cover;
+            display: grid;
+            gap: 14px;
+        }
+
+        .kicker { text-transform: uppercase; letter-spacing: .2em; font-size: .9rem; }
+        h1 { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 7vw, 3.6rem); }
+        .intro { max-width: 560px; color: rgba(255,255,255,.9); margin: 0; }
+        .badge { display: inline-block; background: rgba(255,255,255,.26); padding: 10px 16px; border-radius: 999px; font-weight: 600; }
+
+        section { padding: clamp(24px, 5vw, 50px); }
+
+        .highlight {
+            display: grid;
+            gap: 18px;
+            background: rgba(255,255,255,.72);
+        }
+
+        .highlight-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .photo-card {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            background: var(--surface);
+            box-shadow: 0 10px 24px rgba(188, 197, 206, 0.28);
+        }
+
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .photo-main { aspect-ratio: 16 / 9; }
+
+        .details {
+            display: grid;
+            gap: 14px;
+            color: var(--text-soft);
+            line-height: 1.65;
+        }
+
+        .moments {
+            background: rgba(255,255,255,.80);
+        }
+
+        .moments h2,
+        .gallery h2,
+        .plan h2 {
+            margin: 0 0 16px;
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--accent);
+            font-size: clamp(1.5rem, 4.6vw, 2rem);
+        }
+
+        .moment-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        .moment-item {
+            display: grid;
+            gap: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 10px;
+        }
+
+        .moment-photo { aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden; }
+
+        .moment-item p { margin: 0; font-size: .95rem; color: var(--text-soft); }
+
+        .plan-grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        }
+
+        .plan-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 10px 20px rgba(188, 197, 206, 0.2);
+        }
+
+        .time { color: var(--accent); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; }
+        .plan-card h3 { margin: 10px 0 8px; font-size: 1.05rem; }
+        .plan-card p { margin: 0; color: var(--text-soft); line-height: 1.55; }
+
+        .gallery-grid {
+            margin-top: 14px;
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        }
+
+        .gallery-item {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background: #f5f8fa;
+        }
+
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .gallery-note {
+            margin-top: 14px;
+            font-size: .92rem;
+            color: var(--text-soft);
+            border-left: 3px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 26px;
+            color: var(--text-soft);
+            border-top: 1px solid var(--border);
+            background: rgba(255,255,255,.68);
+        }
+
+        @media (min-width: 840px) {
+            .highlight-grid {
+                grid-template-columns: 1.2fr 1fr;
+                align-items: stretch;
+            }
+            .photo-main { aspect-ratio: auto; min-height: 320px; }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <header>
+            <span class="kicker">Meryposa · 6 meses</span>
+            <h1>Viernes 22 de mayo de 2026</h1>
+            <p class="intro">Invitación especial para celebrar seis meses juntos: simple, bonito y con nuestras fotos repartidas por toda la página.</p>
+            <span class="badge">22/05/2026 · Santiago</span>
+        </header>
+
+        <section class="highlight">
+            <div class="highlight-grid">
+                <figure class="photo-card photo-main"><img id="heroPhoto" alt="Foto destacada 6 meses"></figure>
+                <div class="details">
+                    <p><strong>Invitación:</strong> reserva la noche del 22 de mayo de 2026 para celebrar nuestros 6 meses.</p>
+                    <p><strong>Idea del plan:</strong> atardecer, cena rica y cierre caminando sin apuro.</p>
+                    <p><strong>Dress code:</strong> cómodo y elegante.</p>
+                    <p><strong>Mensaje:</strong> hoy no es un evento grande, es un momento nuestro.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="plan">
+            <h2>Plan simple</h2>
+            <div class="plan-grid">
+                <article class="plan-card">
+                    <div class="time">18:30</div>
+                    <h3>Brindis de inicio</h3>
+                    <p>Nos juntamos para abrir la noche con algo rico y unas fotos lindas.</p>
+                </article>
+                <article class="plan-card">
+                    <div class="time">20:00</div>
+                    <h3>Cena tranquila</h3>
+                    <p>Mesa reservada, conversación larga y tiempo para disfrutar.</p>
+                </article>
+                <article class="plan-card">
+                    <div class="time">22:30</div>
+                    <h3>Cierre caminando</h3>
+                    <p>Un paseo corto para cerrar el día y celebrar estos seis meses.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="moments">
+            <h2>Momentos repartidos</h2>
+            <div class="moment-grid">
+                <article class="moment-item">
+                    <figure class="moment-photo photo-card"><img id="momentPhoto1" alt="Momento 1"></figure>
+                    <p>Un recuerdo natural que resume lo bien que la pasamos juntos.</p>
+                </article>
+                <article class="moment-item">
+                    <figure class="moment-photo photo-card"><img id="momentPhoto2" alt="Momento 2"></figure>
+                    <p>Otra imagen favorita para que la página se sienta más personal.</p>
+                </article>
+                <article class="moment-item">
+                    <figure class="moment-photo photo-card"><img id="momentPhoto3" alt="Momento 3"></figure>
+                    <p>Una tercera postal para distribuir las fotos en distintas partes.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Galería completa</h2>
+            <div class="gallery-grid" id="galleryGrid" aria-label="Galería de 6 meses"></div>
+            <p class="gallery-note">Puedes pegar 46 fotos o más en <code>media/6-meses/</code> y regenerar el manifest.</p>
+        </section>
+
+        <footer>
+            Hecho con cariño para nuestra celebración del 22 de mayo de 2026 💛
+        </footer>
+    </main>
+
+    <script>
+        (function () {
+            const manifestPath = '../media/6-meses/manifest.json';
+            const galleryGrid = document.getElementById('galleryGrid');
+            const heroPhoto = document.getElementById('heroPhoto');
+            const momentPhoto1 = document.getElementById('momentPhoto1');
+            const momentPhoto2 = document.getElementById('momentPhoto2');
+            const momentPhoto3 = document.getElementById('momentPhoto3');
+
+            const fallbackImages = [
+                '../FV/foto01.jpg',
+                '../FV/foto02.jpg',
+                '../FV/foto03.jpg',
+                '../FV/foto04.jpg',
+                '../FV/foto05.jpg',
+                '../FV/foto06.jpg'
+            ];
+
+            const withFallback = (img, src, index) => {
+                if (!img) { return; }
+                img.src = src;
+                img.addEventListener('error', () => {
+                    img.src = fallbackImages[index % fallbackImages.length];
+                }, { once: true });
+            };
+
+            const renderGallery = (images) => {
+                if (!galleryGrid) { return; }
+                galleryGrid.innerHTML = '';
+                images.forEach((src, index) => {
+                    const figure = document.createElement('figure');
+                    figure.className = 'gallery-item';
+                    const img = document.createElement('img');
+                    img.alt = `Recuerdo ${index + 1} de seis meses`;
+                    img.loading = 'lazy';
+                    withFallback(img, src, index);
+                    figure.appendChild(img);
+                    galleryGrid.appendChild(figure);
+                });
+            };
+
+            fetch(manifestPath)
+                .then((response) => {
+                    if (!response.ok) { throw new Error('Manifest no disponible'); }
+                    return response.json();
+                })
+                .then((manifest) => {
+                    const images = Array.isArray(manifest.images) && manifest.images.length
+                        ? manifest.images
+                        : fallbackImages;
+
+                    withFallback(heroPhoto, images[0] || fallbackImages[0], 0);
+                    withFallback(momentPhoto1, images[1] || fallbackImages[1], 1);
+                    withFallback(momentPhoto2, images[2] || fallbackImages[2], 2);
+                    withFallback(momentPhoto3, images[3] || fallbackImages[3], 3);
+                    renderGallery(images);
+                })
+                .catch(() => {
+                    withFallback(heroPhoto, fallbackImages[0], 0);
+                    withFallback(momentPhoto1, fallbackImages[1], 1);
+                    withFallback(momentPhoto2, fallbackImages[2], 2);
+                    withFallback(momentPhoto3, fallbackImages[3], 3);
+                    renderGallery(fallbackImages);
+                });
+        })();
+    </script>
+</body>
+</html>
