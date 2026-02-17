@@ -121,6 +121,7 @@
         .overlay {
             position: fixed;
             inset: 0;
+            z-index: 30;
             display: grid;
             place-items: center;
             padding: clamp(20px, 4vw, 48px);
@@ -254,9 +255,34 @@
         }
 
         @media (max-width: 680px) {
+            .overlay {
+                padding: 10px;
+            }
+
+            .overlay-card {
+                max-height: 94vh;
+                padding: 18px 14px;
+                border-radius: 20px;
+                gap: 14px;
+                overflow: auto;
+            }
+
+            .overlay-title {
+                font-size: 1.65rem;
+            }
+
+            .overlay-subtitle {
+                font-size: .9rem;
+            }
+
+            .event-list {
+                gap: 10px;
+            }
+
             .event-option {
                 grid-template-columns: 1fr;
                 text-align: center;
+                padding: 14px;
             }
 
             .event-option input {
@@ -265,6 +291,12 @@
 
             .topbar {
                 justify-content: center;
+            }
+
+            .menu-button,
+            .primary,
+            .secondary {
+                min-height: 44px;
             }
         }
 
@@ -378,6 +410,10 @@
                         input.checked = true;
                         selectedId = input.value;
                         eventClick.currentTarget.focus();
+
+                        if (window.matchMedia('(max-width: 680px)').matches) {
+                            loadSelectedEvent();
+                        }
                     });
 
                     eventList.appendChild(option);
@@ -410,6 +446,12 @@
             loadButton.addEventListener('click', loadSelectedEvent);
             closeMenuBtn.addEventListener('click', hideOverlay);
             openMenuBtn.addEventListener('click', showOverlay);
+
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    hideOverlay();
+                }
+            });
 
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
