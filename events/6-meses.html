@@ -9,237 +9,243 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: linear-gradient(140deg, #f4f6fb 0%, #edf5f6 100%);
-            --panel: rgba(255, 255, 255, 0.85);
-            --surface: rgba(255, 255, 255, 0.95);
+            --bg: linear-gradient(145deg, #f4f6fb 0%, #edf6f6 100%);
+            --panel: rgba(255, 255, 255, 0.88);
+            --surface: rgba(255, 255, 255, 0.96);
             --accent: #2f8f9d;
-            --accent-soft: rgba(47, 143, 157, 0.12);
             --text-main: #2b3137;
             --text-soft: #5a6672;
-            --border: rgba(220, 228, 233, 0.9);
-            --shadow: 0 20px 48px rgba(182, 193, 204, 0.35);
+            --border: rgba(220, 228, 233, 0.95);
+            --shadow: 0 18px 36px rgba(182, 193, 204, 0.32);
         }
 
-        *, *::before, *::after { box-sizing: border-box; }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
             min-height: 100vh;
             background: var(--bg);
-            font-family: 'Poppins', Arial, sans-serif;
             color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            padding: clamp(20px, 5vw, 48px);
+            font-family: 'Poppins', Arial, sans-serif;
+            padding: clamp(20px, 4vw, 44px);
         }
 
-        .invitation {
-            width: min(1024px, 100%);
+        .page {
+            width: min(1040px, 100%);
+            margin: 0 auto;
             background: var(--panel);
+            border: 1px solid var(--border);
             border-radius: 30px;
             overflow: hidden;
-            border: 1px solid var(--border);
             box-shadow: var(--shadow);
         }
 
         header {
-            padding: clamp(48px, 9vw, 110px) clamp(32px, 8vw, 96px);
-            display: grid;
-            gap: clamp(16px, 3vw, 26px);
+            position: relative;
             color: #fff;
-            background-image: linear-gradient(120deg, rgba(47, 143, 157, 0.78), rgba(48, 62, 77, 0.58)), url('../FV/foto08.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            font-weight: 500;
-        }
-
-        h1 {
-            margin: 0;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2.2rem, 7vw, 3.7rem);
-            line-height: 1.08;
-            font-weight: 600;
-        }
-
-        .intro { max-width: 560px; color: rgba(255, 255, 255, .86); }
-
-        .date-badge {
-            display: inline-flex;
-            align-items: center;
+            padding: clamp(42px, 9vw, 90px) clamp(24px, 7vw, 76px);
+            background: linear-gradient(120deg, rgba(47, 143, 157, 0.75), rgba(40, 56, 71, 0.52)), url('../FV/foto08.jpg') center/cover;
+            display: grid;
             gap: 14px;
-            padding: 14px 24px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, .25);
-            letter-spacing: .09em;
-            font-weight: 600;
         }
 
-        section { padding: clamp(34px, 7vw, 70px); }
+        .kicker { text-transform: uppercase; letter-spacing: .2em; font-size: .9rem; }
+        h1 { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 7vw, 3.6rem); }
+        .intro { max-width: 560px; color: rgba(255,255,255,.9); margin: 0; }
+        .badge { display: inline-block; background: rgba(255,255,255,.26); padding: 10px 16px; border-radius: 999px; font-weight: 600; }
 
-        .timeline { background: rgba(255, 255, 255, 0.68); }
-        .timeline-grid { display: grid; gap: clamp(18px, 3.5vw, 30px); }
+        section { padding: clamp(24px, 5vw, 50px); }
 
-        .timeline-item {
-            background: var(--surface);
-            border-radius: 20px;
-            padding: clamp(20px, 4vw, 30px);
+        .highlight {
+            display: grid;
+            gap: 18px;
+            background: rgba(255,255,255,.72);
+        }
+
+        .highlight-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .photo-card {
             border: 1px solid var(--border);
-            box-shadow: 0 14px 30px rgba(185, 198, 207, 0.3);
+            border-radius: 18px;
+            overflow: hidden;
+            background: var(--surface);
+            box-shadow: 0 10px 24px rgba(188, 197, 206, 0.28);
         }
 
-        .time { text-transform: uppercase; letter-spacing: .16em; color: var(--accent); font-weight: 600; }
-        .activity { margin-top: 12px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.3rem, 4vw, 1.7rem); }
-        .description { color: var(--text-soft); line-height: 1.7; }
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .details { background: rgba(255, 255, 255, .75); display: grid; gap: 22px; }
-        .details-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: clamp(20px, 4vw, 30px); }
-        .details-card h2 { margin: 0; color: var(--accent); }
-        .details-card p { margin-bottom: 0; color: var(--text-soft); line-height: 1.6; }
+        .photo-main { aspect-ratio: 16 / 9; }
 
-        .section-heading { text-align: center; margin-bottom: 30px; }
-        .section-heading h2 { margin-bottom: 10px; color: var(--accent); }
-        .section-heading p { margin: 0 auto; max-width: 560px; color: var(--text-soft); }
+        .details {
+            display: grid;
+            gap: 14px;
+            color: var(--text-soft);
+            line-height: 1.65;
+        }
+
+        .moments {
+            background: rgba(255,255,255,.80);
+        }
+
+        .moments h2,
+        .gallery h2,
+        .plan h2 {
+            margin: 0 0 16px;
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--accent);
+            font-size: clamp(1.5rem, 4.6vw, 2rem);
+        }
+
+        .moment-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        .moment-item {
+            display: grid;
+            gap: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 10px;
+        }
+
+        .moment-photo { aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden; }
+
+        .moment-item p { margin: 0; font-size: .95rem; color: var(--text-soft); }
+
+        .plan-grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        }
+
+        .plan-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 10px 20px rgba(188, 197, 206, 0.2);
+        }
+
+        .time { color: var(--accent); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; }
+        .plan-card h3 { margin: 10px 0 8px; font-size: 1.05rem; }
+        .plan-card p { margin: 0; color: var(--text-soft); line-height: 1.55; }
 
         .gallery-grid {
+            margin-top: 14px;
             display: grid;
             gap: 14px;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         }
 
         .gallery-item {
+            border: 1px solid var(--border);
+            border-radius: 14px;
             overflow: hidden;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            aspect-ratio: 4/5;
-            background: #f4f7f9;
-            box-shadow: 0 12px 24px rgba(188, 196, 205, 0.3);
-            position: relative;
+            aspect-ratio: 4 / 5;
+            background: #f5f8fa;
         }
 
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .gallery-empty {
-            border: 1px dashed var(--border);
-            border-radius: 16px;
-            padding: 22px;
+        .gallery-note {
+            margin-top: 14px;
+            font-size: .92rem;
             color: var(--text-soft);
-            background: #f8fcfd;
-            text-align: center;
+            border-left: 3px solid var(--accent);
+            padding-left: 12px;
         }
-
-        .media-note {
-            margin-top: 18px;
-            border-left: 4px solid var(--accent);
-            background: #f8fcfd;
-            padding: 14px 16px;
-            color: var(--text-soft);
-            border-radius: 10px;
-            font-size: .95rem;
-        }
-
-        .video-card {
-            margin-top: 30px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 22px;
-            box-shadow: 0 14px 30px rgba(188, 198, 208, 0.3);
-        }
-
-        .video-card video { width: 100%; border-radius: 14px; border: 1px solid var(--border); background: #10151a; }
 
         footer {
-            padding: 28px;
             text-align: center;
+            padding: 26px;
             color: var(--text-soft);
-            background: rgba(255, 255, 255, .72);
             border-top: 1px solid var(--border);
+            background: rgba(255,255,255,.68);
         }
 
-        @media (min-width: 768px) {
-            .timeline-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .details-card:last-child { grid-column: span 2; }
+        @media (min-width: 840px) {
+            .highlight-grid {
+                grid-template-columns: 1.2fr 1fr;
+                align-items: stretch;
+            }
+            .photo-main { aspect-ratio: auto; min-height: 320px; }
         }
     </style>
 </head>
 <body>
-    <main class="invitation">
+    <main class="page">
         <header>
-            <div class="subtitle">Meryposa · 6 meses</div>
+            <span class="kicker">Meryposa · 6 meses</span>
             <h1>Viernes 22 de mayo de 2026</h1>
-            <p class="intro">
-                Esta es nuestra invitación oficial para celebrar 6 meses juntos. Un plan elegante y suave, pensado para disfrutar el día completo contigo.
-            </p>
-            <div class="date-badge">22/05/2026 · Celebración de 6 meses · Santiago</div>
+            <p class="intro">Invitación especial para celebrar seis meses juntos: simple, bonito y con nuestras fotos repartidas por toda la página.</p>
+            <span class="badge">22/05/2026 · Santiago</span>
         </header>
 
-        <section class="timeline">
-            <div class="timeline-grid">
-                <article class="timeline-item">
-                    <div class="time">18:30 · Encuentro</div>
-                    <div class="activity">Brindis de inicio</div>
-                    <p class="description">Arrancamos con algo rico para brindar por estos seis meses y tomar las primeras fotos de la noche.</p>
+        <section class="highlight">
+            <div class="highlight-grid">
+                <figure class="photo-card photo-main"><img id="heroPhoto" alt="Foto destacada 6 meses"></figure>
+                <div class="details">
+                    <p><strong>Invitación:</strong> reserva la noche del 22 de mayo de 2026 para celebrar nuestros 6 meses.</p>
+                    <p><strong>Idea del plan:</strong> atardecer, cena rica y cierre caminando sin apuro.</p>
+                    <p><strong>Dress code:</strong> cómodo y elegante.</p>
+                    <p><strong>Mensaje:</strong> hoy no es un evento grande, es un momento nuestro.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="plan">
+            <h2>Plan simple</h2>
+            <div class="plan-grid">
+                <article class="plan-card">
+                    <div class="time">18:30</div>
+                    <h3>Brindis de inicio</h3>
+                    <p>Nos juntamos para abrir la noche con algo rico y unas fotos lindas.</p>
                 </article>
-                <article class="timeline-item">
-                    <div class="time">20:00 · Cena especial</div>
-                    <div class="activity">Mesa reservada</div>
-                    <p class="description">Cena tranquila en un lugar con ambiente íntimo, música suave y tiempo para conversar sin apuros.</p>
+                <article class="plan-card">
+                    <div class="time">20:00</div>
+                    <h3>Cena tranquila</h3>
+                    <p>Mesa reservada, conversación larga y tiempo para disfrutar.</p>
                 </article>
-                <article class="timeline-item">
-                    <div class="time">22:30 · Cierre</div>
-                    <div class="activity">Postre y paseo</div>
-                    <p class="description">Cerramos caminando y celebrando nuestro camino juntos, con una sorpresa final preparada para ti.</p>
+                <article class="plan-card">
+                    <div class="time">22:30</div>
+                    <h3>Cierre caminando</h3>
+                    <p>Un paseo corto para cerrar el día y celebrar estos seis meses.</p>
                 </article>
             </div>
         </section>
 
-        <section class="details">
-            <div class="details-card">
-                <h2>Invitación del evento</h2>
-                <p>Fecha confirmada: viernes <strong>22 de mayo de 2026</strong>. Reserva el día para celebrarlo juntos.</p>
-            </div>
-            <div class="details-card">
-                <h2>Dress code</h2>
-                <p>Elegante y cómodo. Algo que te haga sentir linda para fotos, brindis y paseo nocturno.</p>
-            </div>
-            <div class="details-card">
-                <h2>Confirmación</h2>
-                <p>Tu presencia es lo más importante. Yo me encargo de reservas, traslados y detalles.</p>
+        <section class="moments">
+            <h2>Momentos repartidos</h2>
+            <div class="moment-grid">
+                <article class="moment-item">
+                    <figure class="moment-photo photo-card"><img id="momentPhoto1" alt="Momento 1"></figure>
+                    <p>Un recuerdo natural que resume lo bien que la pasamos juntos.</p>
+                </article>
+                <article class="moment-item">
+                    <figure class="moment-photo photo-card"><img id="momentPhoto2" alt="Momento 2"></figure>
+                    <p>Otra imagen favorita para que la página se sienta más personal.</p>
+                </article>
+                <article class="moment-item">
+                    <figure class="moment-photo photo-card"><img id="momentPhoto3" alt="Momento 3"></figure>
+                    <p>Una tercera postal para distribuir las fotos en distintas partes.</p>
+                </article>
             </div>
         </section>
 
-        <section>
-            <div class="section-heading">
-                <h2>Galería 6 meses</h2>
-                <p>Carga tu carpeta de Google Drive en <code>media/6-meses/</code>, corre el generador y la galería se arma sola.</p>
-            </div>
-
-            <div class="gallery-grid" id="galleryGrid" aria-label="Galería 6 meses"></div>
-
-            <div class="media-note">
-                Flujo recomendado: descarga la carpeta desde Drive → pega archivos en <strong>media/6-meses/</strong> → ejecuta
-                <code>python scripts/generate-6-meses-manifest.py</code>.
-            </div>
-
-            <div class="video-card">
-                <h3>Video para la invitación</h3>
-                <p>El video principal se toma desde el manifest. Si no hay, usa <code>media/6-meses/video01.mp4</code> y luego fallback a <code>FV/video01.mp4</code>.</p>
-                <video controls playsinline preload="metadata" id="video6Meses">
-                    <source src="../media/6-meses/video01.mp4" type="video/mp4">
-                    Tu navegador no soporta video HTML5.
-                </video>
-            </div>
+        <section class="gallery">
+            <h2>Galería completa</h2>
+            <div class="gallery-grid" id="galleryGrid" aria-label="Galería de 6 meses"></div>
+            <p class="gallery-note">Puedes pegar 46 fotos o más en <code>media/6-meses/</code> y regenerar el manifest.</p>
         </section>
 
         <footer>
-            Invitación especial creada para nuestro evento del 22 de mayo de 2026 💛
+            Hecho con cariño para nuestra celebración del 22 de mayo de 2026 💛
         </footer>
     </main>
 
@@ -247,8 +253,12 @@
         (function () {
             const manifestPath = '../media/6-meses/manifest.json';
             const galleryGrid = document.getElementById('galleryGrid');
-            const video = document.getElementById('video6Meses');
-            const defaultFallbackImages = [
+            const heroPhoto = document.getElementById('heroPhoto');
+            const momentPhoto1 = document.getElementById('momentPhoto1');
+            const momentPhoto2 = document.getElementById('momentPhoto2');
+            const momentPhoto3 = document.getElementById('momentPhoto3');
+
+            const fallbackImages = [
                 '../FV/foto01.jpg',
                 '../FV/foto02.jpg',
                 '../FV/foto03.jpg',
@@ -257,65 +267,51 @@
                 '../FV/foto06.jpg'
             ];
 
-            const fallbackVideo = '../FV/video01.mp4';
+            const withFallback = (img, src, index) => {
+                if (!img) { return; }
+                img.src = src;
+                img.addEventListener('error', () => {
+                    img.src = fallbackImages[index % fallbackImages.length];
+                }, { once: true });
+            };
 
             const renderGallery = (images) => {
                 if (!galleryGrid) { return; }
-
-                const safeImages = Array.isArray(images) && images.length
-                    ? images
-                    : defaultFallbackImages;
-
                 galleryGrid.innerHTML = '';
-
-                safeImages.forEach((src, index) => {
+                images.forEach((src, index) => {
                     const figure = document.createElement('figure');
                     figure.className = 'gallery-item';
-
                     const img = document.createElement('img');
-                    img.loading = 'lazy';
                     img.alt = `Recuerdo ${index + 1} de seis meses`;
-                    img.src = src;
-                    img.addEventListener('error', () => {
-                        if (src !== defaultFallbackImages[index % defaultFallbackImages.length]) {
-                            img.src = defaultFallbackImages[index % defaultFallbackImages.length];
-                        }
-                    }, { once: true });
-
+                    img.loading = 'lazy';
+                    withFallback(img, src, index);
                     figure.appendChild(img);
                     galleryGrid.appendChild(figure);
                 });
             };
 
-            const setVideoSource = (videoSrc) => {
-                if (!video) { return; }
-                const source = video.querySelector('source');
-                if (!source) { return; }
-                source.src = videoSrc || '../media/6-meses/video01.mp4';
-                video.load();
-
-                video.addEventListener('error', () => {
-                    if (source.src !== fallbackVideo) {
-                        source.src = fallbackVideo;
-                        video.load();
-                    }
-                }, { once: true });
-            };
-
             fetch(manifestPath)
                 .then((response) => {
-                    if (!response.ok) {
-                        throw new Error('Manifest no disponible');
-                    }
+                    if (!response.ok) { throw new Error('Manifest no disponible'); }
                     return response.json();
                 })
                 .then((manifest) => {
-                    renderGallery(manifest.images);
-                    setVideoSource(manifest.video);
+                    const images = Array.isArray(manifest.images) && manifest.images.length
+                        ? manifest.images
+                        : fallbackImages;
+
+                    withFallback(heroPhoto, images[0] || fallbackImages[0], 0);
+                    withFallback(momentPhoto1, images[1] || fallbackImages[1], 1);
+                    withFallback(momentPhoto2, images[2] || fallbackImages[2], 2);
+                    withFallback(momentPhoto3, images[3] || fallbackImages[3], 3);
+                    renderGallery(images);
                 })
                 .catch(() => {
-                    renderGallery([]);
-                    setVideoSource('../media/6-meses/video01.mp4');
+                    withFallback(heroPhoto, fallbackImages[0], 0);
+                    withFallback(momentPhoto1, fallbackImages[1], 1);
+                    withFallback(momentPhoto2, fallbackImages[2], 2);
+                    withFallback(momentPhoto3, fallbackImages[3], 3);
+                    renderGallery(fallbackImages);
                 });
         })();
     </script>
