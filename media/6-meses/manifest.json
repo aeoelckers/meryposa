@@ -1,4 +1,13 @@
 {
-  "images": [],
+  "images": [
+    "../media/6-meses/20260207_205105(1).jpg",
+    "../media/6-meses/IMG_0061.jpg",
+    "../media/6-meses/IMG_0416.jpg",
+    "../media/6-meses/IMG_0915.jpg",
+    "../media/6-meses/IMG_1025.jpg",
+    "../media/6-meses/IMG_1084.jpg",
+    "../media/6-meses/MERUTI.jpg",
+    "../media/6-meses/Natalia.jpg"
+  ],
   "video": "../media/6-meses/video01.mp4"
 }
