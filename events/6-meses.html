@@ -92,7 +92,6 @@
 
         .moments h2,
         .gallery h2,
-        .plan h2,
         .invite-teaser h2 {
             margin: 0 0 16px;
             font-family: 'Playfair Display', Georgia, serif;
@@ -119,23 +118,28 @@
 
         .moment-item p { margin: 0; font-size: .95rem; color: var(--text-soft); }
 
-        .plan-grid {
-            display: grid;
-            gap: 14px;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+
+        .section-tip {
+            margin: -2px 0 14px;
+            color: var(--text-soft);
+            font-size: .92rem;
         }
 
-        .plan-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: 0 10px 20px rgba(188, 197, 206, 0.2);
+        .editable-note {
+            margin: 0;
+            font-size: .95rem;
+            color: var(--text-soft);
+            border: 1px dashed rgba(47, 143, 157, 0.4);
+            border-radius: 10px;
+            padding: 10px;
+            background: rgba(47, 143, 157, 0.05);
         }
 
-        .time { color: var(--accent); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; }
-        .plan-card h3 { margin: 10px 0 8px; font-size: 1.05rem; }
-        .plan-card p { margin: 0; color: var(--text-soft); line-height: 1.55; }
+        .editable-note:focus {
+            outline: 2px solid rgba(47, 143, 157, 0.35);
+            outline-offset: 2px;
+            background: rgba(47, 143, 157, 0.09);
+        }
 
         .gallery-grid {
             margin-top: 14px;
@@ -298,6 +302,49 @@
             background: rgba(255,255,255,.68);
         }
 
+        @media (max-width: 640px) {
+            body {
+                padding: 10px;
+            }
+
+            .page {
+                border-radius: 18px;
+            }
+
+            header {
+                padding: 28px 16px 34px;
+                background-position: center;
+            }
+
+            .kicker {
+                font-size: .72rem;
+                letter-spacing: .16em;
+            }
+
+            .badge {
+                font-size: .85rem;
+                width: fit-content;
+            }
+
+            section {
+                padding: 16px;
+            }
+
+            .highlight-grid,
+            .moment-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .invite-card {
+                width: 100%;
+            }
+
+            .invite-cover {
+                min-height: 200px;
+            }
+        }
+
         @media (min-width: 840px) {
             .highlight-grid {
                 grid-template-columns: 1.2fr 1fr;
@@ -320,49 +367,28 @@
             <div class="highlight-grid">
                 <figure class="photo-card photo-main"><img id="heroPhoto" alt="Foto destacada 6 meses"></figure>
                 <div class="details">
-                    <p><strong>Invitación:</strong> reserva la noche del 22 de mayo de 2026 para celebrar nuestros 6 meses.</p>
-                    <p><strong>Idea del plan:</strong> atardecer, cena rica y cierre caminando sin apuro.</p>
-                    <p><strong>Dress code:</strong> cómodo y elegante.</p>
-                    <p><strong>Mensaje:</strong> hoy no es un evento grande, es un momento nuestro.</p>
+                    <p contenteditable="true" class="editable-note"><strong>Mensaje corto:</strong> escribe aquí algo lindo para ella.</p>
                 </div>
             </div>
         </section>
 
-        <section class="plan">
-            <h2>Plan simple</h2>
-            <div class="plan-grid">
-                <article class="plan-card">
-                    <div class="time">18:30</div>
-                    <h3>Brindis de inicio</h3>
-                    <p>Nos juntamos para abrir la noche con algo rico y unas fotos lindas.</p>
-                </article>
-                <article class="plan-card">
-                    <div class="time">20:00</div>
-                    <h3>Cena tranquila</h3>
-                    <p>Mesa reservada, conversación larga y tiempo para disfrutar.</p>
-                </article>
-                <article class="plan-card">
-                    <div class="time">22:30</div>
-                    <h3>Cierre caminando</h3>
-                    <p>Un paseo corto para cerrar el día y celebrar estos seis meses.</p>
-                </article>
-            </div>
-        </section>
+
 
         <section class="moments">
-            <h2>Momentos repartidos</h2>
+            <h2>Nuestros espacios</h2>
+            <p class="section-tip">Puedes editar estos textos con un mensaje corto para ella 💛</p>
             <div class="moment-grid">
                 <article class="moment-item">
-                    <figure class="moment-photo photo-card"><img id="momentPhoto1" alt="Momento 1"></figure>
-                    <p>Un recuerdo natural que resume lo bien que la pasamos juntos.</p>
+                    <figure class="moment-photo photo-card"><img id="momentPhoto1" alt="Espacio de foto 1"></figure>
+                    <p contenteditable="true" class="editable-note">Escribe aquí una frase corta...</p>
                 </article>
                 <article class="moment-item">
-                    <figure class="moment-photo photo-card"><img id="momentPhoto2" alt="Momento 2"></figure>
-                    <p>Otra imagen favorita para que la página se sienta más personal.</p>
+                    <figure class="moment-photo photo-card"><img id="momentPhoto2" alt="Espacio de foto 2"></figure>
+                    <p contenteditable="true" class="editable-note">Escribe aquí otra frase...</p>
                 </article>
                 <article class="moment-item">
-                    <figure class="moment-photo photo-card"><img id="momentPhoto3" alt="Momento 3"></figure>
-                    <p>Una tercera postal para distribuir las fotos en distintas partes.</p>
+                    <figure class="moment-photo photo-card"><img id="momentPhoto3" alt="Espacio de foto 3"></figure>
+                    <p contenteditable="true" class="editable-note">Y aquí tu mensaje final...</p>
                 </article>
             </div>
         </section>
