@@ -62,11 +62,13 @@
             background: rgba(255,255,255,.22);
             color: #fff;
             border-radius: 999px;
-            width: 46px;
-            height: 46px;
-            display: grid;
-            place-items: center;
-            font-size: 1.15rem;
+            min-height: 46px;
+            padding: 0 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
             box-shadow: 0 10px 20px rgba(20, 33, 47, .26);
             transition: transform .2s ease, background .2s ease;
@@ -379,8 +381,10 @@
             .invite-mini {
                 top: 12px;
                 right: 12px;
-                width: 42px;
-                height: 42px;
+                min-height: 42px;
+                padding: 0 12px;
+                font-size: .92rem;
+                gap: 6px;
             }
 
             section {
@@ -423,7 +427,7 @@
 <body>
     <main class="page">
         <header>
-            <button class="invite-mini" id="openInviteMini" type="button" aria-label="Abrir invitación" aria-haspopup="dialog" aria-controls="inviteOverlay">✉️</button>
+            <button class="invite-mini" id="openInviteMini" type="button" aria-label="Abrir invitación" aria-haspopup="dialog" aria-controls="inviteOverlay"><span aria-hidden="true">✉️</span><span>Invitación</span></button>
             <span class="kicker">Meryposa · 6 meses</span>
             <h1>Viernes 22 de mayo de 2026</h1>
             <p class="intro">Invitación especial para celebrar seis meses juntos: simple, bonito y con nuestras fotos repartidas por toda la página.</p>
