@@ -161,6 +161,12 @@
             padding-left: 12px;
         }
 
+        .gallery-meta {
+            margin-top: 10px;
+            color: var(--text-soft);
+            font-size: .9rem;
+        }
+
         footer {
             text-align: center;
             padding: 26px;
@@ -241,7 +247,8 @@
         <section class="gallery">
             <h2>Galería completa</h2>
             <div class="gallery-grid" id="galleryGrid" aria-label="Galería de 6 meses"></div>
-            <p class="gallery-note">Puedes pegar 46 fotos o más en <code>media/6-meses/</code> y regenerar el manifest.</p>
+            <p class="gallery-meta" id="galleryMeta"></p>
+            <p class="gallery-note">Puedes pegar más fotos en <code>media/6-meses/</code> y regenerar el manifest para actualizar esta sección.</p>
         </section>
 
         <footer>
@@ -257,6 +264,7 @@
             const momentPhoto1 = document.getElementById('momentPhoto1');
             const momentPhoto2 = document.getElementById('momentPhoto2');
             const momentPhoto3 = document.getElementById('momentPhoto3');
+            const galleryMeta = document.getElementById('galleryMeta');
 
             const fallbackImages = [
                 '../FV/foto01.jpg',
@@ -267,9 +275,11 @@
                 '../FV/foto06.jpg'
             ];
 
+            const normalizeSrc = (src) => encodeURI(src).replace(/#/g, '%23');
+
             const withFallback = (img, src, index) => {
                 if (!img) { return; }
-                img.src = src;
+                img.src = normalizeSrc(src);
                 img.addEventListener('error', () => {
                     img.src = fallbackImages[index % fallbackImages.length];
                 }, { once: true });
@@ -288,6 +298,9 @@
                     figure.appendChild(img);
                     galleryGrid.appendChild(figure);
                 });
+                if (galleryMeta) {
+                    galleryMeta.textContent = `${images.length} foto${images.length === 1 ? '' : 's'} cargada${images.length === 1 ? '' : 's'} para esta invitación.`;
+                }
             };
 
             fetch(manifestPath)
