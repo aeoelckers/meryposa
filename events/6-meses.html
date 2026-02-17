@@ -44,7 +44,7 @@
             position: relative;
             color: #fff;
             padding: clamp(42px, 9vw, 90px) clamp(24px, 7vw, 76px);
-            background: linear-gradient(120deg, rgba(47, 143, 157, 0.75), rgba(40, 56, 71, 0.52)), url('../FV/foto08.jpg') center/cover;
+            background: linear-gradient(120deg, rgba(47, 143, 157, 0.72), rgba(40, 56, 71, 0.54)), url('../media/6-meses/MERUTI.jpg') center 34%/cover;
             display: grid;
             gap: 14px;
         }
@@ -92,7 +92,8 @@
 
         .moments h2,
         .gallery h2,
-        .plan h2 {
+        .plan h2,
+        .invite-teaser h2 {
             margin: 0 0 16px;
             font-family: 'Playfair Display', Georgia, serif;
             color: var(--accent);
@@ -159,6 +160,134 @@
             color: var(--text-soft);
             border-left: 3px solid var(--accent);
             padding-left: 12px;
+        }
+
+        .gallery-meta {
+            margin-top: 10px;
+            color: var(--text-soft);
+            font-size: .9rem;
+        }
+
+        .invite-teaser {
+            background: rgba(255,255,255,.74);
+            display: grid;
+            gap: 14px;
+        }
+
+        .invite-card {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--surface);
+            box-shadow: 0 14px 26px rgba(188, 197, 206, 0.24);
+            width: min(360px, 100%);
+            padding: 14px;
+            display: grid;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .invite-card:hover,
+        .invite-card:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 32px rgba(172, 184, 196, 0.32);
+            outline: none;
+        }
+
+        .invite-thumb {
+            aspect-ratio: 5 / 3;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .invite-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .invite-card h3 {
+            margin: 0;
+            color: var(--accent);
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .invite-card p {
+            margin: 0;
+            color: var(--text-soft);
+            font-size: .95rem;
+            line-height: 1.55;
+        }
+
+        .invite-overlay {
+            position: fixed;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            background: rgba(20, 28, 36, .6);
+            padding: clamp(16px, 4vw, 34px);
+            z-index: 30;
+            opacity: 1;
+            transition: opacity .2s ease;
+        }
+
+        .invite-overlay[aria-hidden="true"] {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .invite-sheet {
+            width: min(720px, 100%);
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(235, 242, 246, .9);
+            box-shadow: 0 28px 54px rgba(18, 29, 40, .35);
+            background: #fff;
+        }
+
+        .invite-cover {
+            min-height: 260px;
+            position: relative;
+            padding: clamp(24px, 6vw, 42px);
+            color: #fff;
+            background: linear-gradient(120deg, rgba(27, 58, 68, .5), rgba(20, 32, 44, .5)), url('../media/6-meses/Natalia.jpg') center/cover;
+            display: grid;
+            align-content: end;
+            gap: 10px;
+        }
+
+        .invite-cover h2,
+        .invite-cover p {
+            margin: 0;
+        }
+
+        .invite-content {
+            padding: clamp(20px, 5vw, 30px);
+            display: grid;
+            gap: 10px;
+            color: var(--text-soft);
+        }
+
+        .invite-content strong {
+            color: var(--text-main);
+        }
+
+        .invite-actions {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 clamp(20px, 5vw, 30px) clamp(20px, 5vw, 26px);
+        }
+
+        .invite-close {
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(120deg, var(--accent), #3caab5);
+            color: #fff;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
         footer {
@@ -238,16 +367,47 @@
             </div>
         </section>
 
+        <section class="invite-teaser">
+            <h2>Invitación especial</h2>
+            <button class="invite-card" id="openInviteCard" type="button" aria-haspopup="dialog" aria-controls="inviteOverlay" aria-expanded="false">
+                <figure class="invite-thumb">
+                    <img src="../media/6-meses/Natalia.jpg" alt="Previa de Invitación Cancioncera del 22 de Mayo">
+                </figure>
+                <h3>Invitación Cancioncera el 22 de Mayo</h3>
+                <p>Haz clic para abrir la carta con todos los detalles de la invitación.</p>
+            </button>
+        </section>
+
         <section class="gallery">
             <h2>Galería completa</h2>
             <div class="gallery-grid" id="galleryGrid" aria-label="Galería de 6 meses"></div>
-            <p class="gallery-note">Puedes pegar 46 fotos o más en <code>media/6-meses/</code> y regenerar el manifest.</p>
+            <p class="gallery-meta" id="galleryMeta"></p>
+            <p class="gallery-note">Puedes pegar más fotos en <code>media/6-meses/</code> y regenerar el manifest para actualizar esta sección.</p>
         </section>
 
         <footer>
             Hecho con cariño para nuestra celebración del 22 de mayo de 2026 💛
         </footer>
     </main>
+
+    <section class="invite-overlay" id="inviteOverlay" role="dialog" aria-modal="true" aria-labelledby="inviteTitle" aria-hidden="true">
+        <article class="invite-sheet">
+            <header class="invite-cover">
+                <p>Invitación especial</p>
+                <h2 id="inviteTitle">Invitación Cancioncera el 22 de Mayo</h2>
+                <p>Con mucho cariño y buena música ✨</p>
+            </header>
+            <div class="invite-content">
+                <p><strong>Fecha:</strong> Viernes 22 de mayo de 2026</p>
+                <p><strong>Lugar:</strong> Santiago</p>
+                <p><strong>Hora sugerida:</strong> 19:30 hrs</p>
+                <p><strong>Mensaje:</strong> Una noche para disfrutar juntos, cantar, reír y celebrar este momento especial.</p>
+            </div>
+            <div class="invite-actions">
+                <button class="invite-close" id="closeInviteCard" type="button">Cerrar invitación</button>
+            </div>
+        </article>
+    </section>
 
     <script>
         (function () {
@@ -257,6 +417,10 @@
             const momentPhoto1 = document.getElementById('momentPhoto1');
             const momentPhoto2 = document.getElementById('momentPhoto2');
             const momentPhoto3 = document.getElementById('momentPhoto3');
+            const galleryMeta = document.getElementById('galleryMeta');
+            const openInviteCard = document.getElementById('openInviteCard');
+            const inviteOverlay = document.getElementById('inviteOverlay');
+            const closeInviteCard = document.getElementById('closeInviteCard');
 
             const fallbackImages = [
                 '../FV/foto01.jpg',
@@ -267,9 +431,11 @@
                 '../FV/foto06.jpg'
             ];
 
+            const normalizeSrc = (src) => encodeURI(src).replace(/#/g, '%23');
+
             const withFallback = (img, src, index) => {
                 if (!img) { return; }
-                img.src = src;
+                img.src = normalizeSrc(src);
                 img.addEventListener('error', () => {
                     img.src = fallbackImages[index % fallbackImages.length];
                 }, { once: true });
@@ -288,6 +454,9 @@
                     figure.appendChild(img);
                     galleryGrid.appendChild(figure);
                 });
+                if (galleryMeta) {
+                    galleryMeta.textContent = `${images.length} foto${images.length === 1 ? '' : 's'} cargada${images.length === 1 ? '' : 's'} para esta invitación.`;
+                }
             };
 
             fetch(manifestPath)
@@ -313,6 +482,40 @@
                     withFallback(momentPhoto3, fallbackImages[3], 3);
                     renderGallery(fallbackImages);
                 });
+
+            const openInvitation = () => {
+                if (!inviteOverlay || !openInviteCard) { return; }
+                inviteOverlay.setAttribute('aria-hidden', 'false');
+                openInviteCard.setAttribute('aria-expanded', 'true');
+            };
+
+            const closeInvitation = () => {
+                if (!inviteOverlay || !openInviteCard) { return; }
+                inviteOverlay.setAttribute('aria-hidden', 'true');
+                openInviteCard.setAttribute('aria-expanded', 'false');
+            };
+
+            if (openInviteCard) {
+                openInviteCard.addEventListener('click', openInvitation);
+            }
+
+            if (closeInviteCard) {
+                closeInviteCard.addEventListener('click', closeInvitation);
+            }
+
+            if (inviteOverlay) {
+                inviteOverlay.addEventListener('click', (event) => {
+                    if (event.target === inviteOverlay) {
+                        closeInvitation();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeInvitation();
+                }
+            });
         })();
     </script>
 </body>
