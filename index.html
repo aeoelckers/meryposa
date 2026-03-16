@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: linear-gradient(145deg, #f3f6f9 0%, #eef3f7 45%, #f8f5f0 100%);
+            --bg: radial-gradient(circle at 12% 18%, rgba(47, 143, 157, 0.14), transparent 44%),
+                  radial-gradient(circle at 88% 8%, rgba(242, 184, 128, 0.18), transparent 42%),
+                  linear-gradient(145deg, #f3f6f9 0%, #eef3f7 45%, #f8f5f0 100%);
             --panel: rgba(255, 255, 255, 0.78);
             --surface: rgba(255, 255, 255, 0.92);
             --text-main: #2b3137;
@@ -99,13 +101,16 @@
             flex: 1;
             display: flex;
             min-height: 0;
+            padding: clamp(14px, 3vw, 24px);
         }
 
         .viewer iframe {
             flex: 1;
             border: none;
             width: 100%;
-            background: rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: 0 20px 42px rgba(176, 189, 201, 0.24);
         }
 
         .empty-state {
@@ -293,6 +298,14 @@
                 justify-content: center;
             }
 
+            .viewer {
+                padding: 10px;
+            }
+
+            .viewer iframe {
+                border-radius: 18px;
+            }
+
             .menu-button,
             .primary,
             .secondary {
@@ -364,7 +377,7 @@
                 {
                     id: '7-meses',
                     title: '7 meses',
-                    date: 'Nuevo capítulo',
+                    date: 'Martes 17 de marzo de 2026',
                     description: 'Sport Français en Vitacura, 19:30 · Super Clásico de Aproach Mery & Agustín.',
                     path: 'events/7-meses.html'
                 }
@@ -429,9 +442,63 @@
 
             const findEvent = (id) => events.find(evt => evt.id === id) || null;
 
+            const normalize = (value) => (value || '')
+                .toString()
+                .trim()
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[̀-ͯ]/g, '');
+
+            const askSevenMonthsQuestions = () => {
+                const quiz = [
+                    {
+                        question: `Pregunta 1/3:
+¿Cuál fue el primer vehículo que te busqué?
+A) Chevrolet Luv V6 (Camioneta)
+B) Honda Elite 125 (motoneta)
+C) Suzuki Maruti 800 (Meruti)`,
+                        answers: ['b', '2', 'honda elite 125', 'honda elite 125 motoneta', 'honda elite 125 (motoneta)']
+                    },
+                    {
+                        question: `Pregunta 2/3:
+¿Con qué fruta te distraje para pedir pololeo?
+A) Piña
+B) Kiwi
+C) Manchanach`,
+                        answers: ['a', '1', 'pina', 'piña']
+                    },
+                    {
+                        question: `Pregunta 3/3:
+¿Qué vamos a hacer el martes 17?
+A) Campeonato de Golfito
+B) Comer con la Pola
+C) Ir al Sauna`,
+                        answers: ['a', '1', 'campeonato de golfito']
+                    }
+                ];
+
+                for (const item of quiz) {
+                    const response = window.prompt(item.question);
+                    if (response === null) {
+                        return false;
+                    }
+                    const value = normalize(response);
+                    if (!item.answers.some(answer => normalize(answer) === value)) {
+                        window.alert('Respuesta incorrecta. Inténtalo de nuevo para abrir 7 meses.');
+                        return false;
+                    }
+                }
+                return true;
+            };
+
             const loadSelectedEvent = () => {
                 const event = findEvent(selectedId) || events[0];
                 if (!event) { return; }
+
+                if (event.id === '7-meses' && !askSevenMonthsQuestions()) {
+                    showOverlay();
+                    return;
+                }
 
                 frame.src = event.path;
                 titleEl.textContent = event.title;
@@ -469,7 +536,7 @@
             renderOptions();
             showOverlay();
             const defaultEvent = findEvent(selectedId);
-            if (defaultEvent) {
+            if (defaultEvent && defaultEvent.id !== '7-meses') {
                 frame.src = defaultEvent.path;
                 titleEl.textContent = defaultEvent.title;
                 dateEl.textContent = defaultEvent.date;
