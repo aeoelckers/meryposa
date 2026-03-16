@@ -297,6 +297,123 @@
             background: rgba(255, 255, 255, 0.68);
             border-top: 1px solid var(--border);
         }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 10px;
+            }
+
+            .invitation {
+                border-radius: 18px;
+            }
+
+            header {
+                padding: 26px 16px 34px;
+                gap: 14px;
+            }
+
+            header::before {
+                background-size: 49% 33%, 49% 33%, 49% 33%, 49% 33%, 49% 33%, 49% 33%;
+                background-position: 0% 0%, 100% 0%, 0% 50%, 100% 50%, 0% 100%, 100% 100%;
+                opacity: 0.88;
+            }
+
+            .subtitle {
+                font-size: 0.72rem;
+                letter-spacing: 0.14em;
+            }
+
+            h1 {
+                font-size: clamp(2rem, 11vw, 2.6rem);
+            }
+
+            .intro {
+                font-size: 1.02rem;
+                line-height: 1.55;
+                max-width: 100%;
+                margin: 2px 0;
+            }
+
+            .date-chip {
+                font-size: 0.74rem;
+                letter-spacing: 0.06em;
+                padding: 7px 12px;
+            }
+
+            .date-badge {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                letter-spacing: 0.06em;
+                padding: 12px 14px;
+                line-height: 1.4;
+                font-size: 0.95rem;
+            }
+
+            .pill-row {
+                gap: 8px;
+            }
+
+            .pill {
+                font-size: 0.78rem;
+                padding: 7px 12px;
+            }
+
+            section {
+                padding: 18px 14px;
+            }
+
+            .timeline-item,
+            .details-card {
+                border-radius: 16px;
+                padding: 18px 14px;
+            }
+
+            .time {
+                width: 100%;
+                letter-spacing: 0.08em;
+                gap: 8px;
+                flex-wrap: wrap;
+                font-size: 0.82rem;
+                line-height: 1.45;
+            }
+
+            .time span {
+                padding: 4px 10px;
+            }
+
+            .activity {
+                margin-top: 12px;
+                font-size: 1.45rem;
+                line-height: 1.2;
+            }
+
+            .description,
+            .details-card p {
+                margin-top: 10px;
+                line-height: 1.58;
+                font-size: 0.98rem;
+            }
+
+            .photo-card {
+                border-radius: 14px;
+            }
+
+            .photo-card img {
+                max-height: 420px;
+            }
+
+            .photo-caption {
+                font-size: 0.9rem;
+                margin-top: 10px;
+            }
+
+            footer {
+                padding: 18px 14px 22px;
+                font-size: 0.9rem;
+            }
+        }
+
     </style>
 </head>
 <body>
