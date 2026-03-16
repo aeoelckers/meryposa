@@ -43,6 +43,37 @@
             box-shadow: var(--shadow);
         }
 
+        .video-hero {
+            position: relative;
+            background: #111;
+            min-height: 260px;
+            max-height: 460px;
+            overflow: hidden;
+        }
+
+        .video-hero video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 16 / 9;
+            background: #111;
+        }
+
+        .video-label {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.42);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: .84rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
         header {
             position: relative;
             padding: clamp(48px, 9vw, 120px) clamp(32px, 8vw, 96px);
@@ -189,6 +220,14 @@
 </head>
 <body>
     <main class="invitation">
+        <section class="video-hero">
+            <video id="heroVideo" autoplay muted loop playsinline preload="metadata">
+                <source src="../FV/video01.mp4" type="video/mp4">
+                Tu navegador no soporta video HTML5.
+            </video>
+            <div class="video-label">Portada 7 meses</div>
+        </section>
+
         <header>
             <div class="subtitle">Meryposa agenda</div>
             <h1>7 meses</h1>
@@ -225,7 +264,7 @@
 
         <section class="photo-block">
             <figure class="photo-card">
-                <img src="../FV/foto01.jpg" alt="Foto de Mery y Agustín en una salida especial" loading="lazy">
+                <img id="memoryPhoto" src="../FV/foto01.jpg" alt="Foto de Mery y Agustín en una salida especial" loading="lazy">
             </figure>
         </section>
 
@@ -233,5 +272,70 @@
             7 meses, mismo formato, siempre cool!
         </footer>
     </main>
+
+    <script>
+        (function () {
+            const heroVideo = document.getElementById('heroVideo');
+            const memoryPhoto = document.getElementById('memoryPhoto');
+
+            const videoCandidates = [
+                '../media/7-meses/video01.mp4',
+                '../media/7 meses/video01.mp4',
+                '../media/ 7 meses/video01.mp4',
+                '../FV/video01.mp4'
+            ];
+
+            const photoCandidates = [
+                '../media/7-meses/foto01.jpg',
+                '../media/7 meses/foto01.jpg',
+                '../media/ 7 meses/foto01.jpg',
+                '../FV/foto01.jpg'
+            ];
+
+            const findFirstWorkingImage = (candidates, onSuccess) => {
+                let index = 0;
+                const test = () => {
+                    if (index >= candidates.length) { return; }
+                    const src = candidates[index++];
+                    const img = new Image();
+                    img.onload = () => onSuccess(src);
+                    img.onerror = test;
+                    img.src = src;
+                };
+                test();
+            };
+
+            const findFirstWorkingVideo = (video, candidates) => {
+                if (!video) { return; }
+                let index = 0;
+                const tryNext = () => {
+                    if (index >= candidates.length) { return; }
+                    const src = candidates[index++];
+                    video.src = src;
+                    const onLoaded = () => {
+                        video.removeEventListener('error', onError);
+                        video.play().catch(() => {});
+                    };
+                    const onError = () => {
+                        video.removeEventListener('loadeddata', onLoaded);
+                        tryNext();
+                    };
+                    video.addEventListener('loadeddata', onLoaded, { once: true });
+                    video.addEventListener('error', onError, { once: true });
+                    video.load();
+                };
+                tryNext();
+            };
+
+            findFirstWorkingVideo(heroVideo, videoCandidates);
+
+            if (memoryPhoto) {
+                findFirstWorkingImage(photoCandidates, (src) => {
+                    memoryPhoto.src = src;
+                });
+            }
+        })();
+    </script>
+
 </body>
 </html>
