@@ -78,7 +78,40 @@
             display: grid;
             gap: clamp(18px, 4vw, 28px);
             color: #fff;
-            background: linear-gradient(120deg, rgba(25, 40, 53, 0.46), rgba(25, 40, 53, 0.24));
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                url('../FV/foto01.jpg'),
+                url('../FV/foto02.jpg'),
+                url('../FV/foto03.jpg'),
+                url('../FV/foto04.jpg'),
+                url('../FV/foto05.jpg'),
+                url('../FV/foto06.jpg');
+            background-size: 34% 52%, 34% 52%, 34% 52%, 34% 52%, 34% 52%, 34% 52%;
+            background-position: 0% 0%, 50% 0%, 100% 0%, 0% 100%, 50% 100%, 100% 100%;
+            background-repeat: no-repeat;
+            filter: saturate(0.95) contrast(0.96);
+            opacity: 0.92;
+            z-index: -2;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(22, 34, 46, 0.58), rgba(22, 34, 46, 0.36));
+            z-index: -1;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
         }
 
         .subtitle {
