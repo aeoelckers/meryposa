@@ -157,6 +157,26 @@
             line-height: 1.7;
         }
 
+        .photo-block {
+            background: rgba(255, 255, 255, 0.78);
+        }
+
+        .photo-card {
+            margin: 0;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            overflow: hidden;
+            background: var(--surface);
+            box-shadow: 0 16px 30px rgba(185, 198, 207, 0.3);
+        }
+
+        .photo-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 640px;
+        }
+
         footer {
             padding: clamp(26px, 5vw, 40px);
             text-align: center;
@@ -173,7 +193,7 @@
             <div class="subtitle">Meryposa agenda</div>
             <h1>7 meses</h1>
             <p class="intro">
-                Manteniendo nuestro estilo: un plan claro, bonito y hecho para nosotros. Esta vez toca partido especial en versión Aproach Mery &amp; Agustín.
+                Mantenemos el mismo estilo, con un plan simple y entretenido para nosotros dos. Esta vez toca nuestro clásico de Aproach Mery &amp; Agustín.
             </p>
             <div class="date-badge">19:30 &bull; Sport Fran&ccedil;ais &bull; Vitacura</div>
         </header>
@@ -183,7 +203,7 @@
                 <div class="time"><span>19:30</span> Sport Fran&ccedil;ais, Vitacura</div>
                 <div class="activity">Super Cl&aacute;sico de Aproach Mery &amp; Agust&iacute;n</div>
                 <p class="description">
-                    Un encuentro para celebrar nuestro s&eacute;ptimo mes con nuestro propio cl&aacute;sico: juego, risas y una noche para seguir creando recuerdos juntos.
+                    Un encuentro para celebrar nuestro s&eacute;ptimo mes con nuestro propio cl&aacute;sico, una tarde competitiva donde siempre me ganas.
                 </p>
             </article>
         </section>
@@ -203,8 +223,14 @@
             </div>
         </section>
 
+        <section class="photo-block">
+            <figure class="photo-card">
+                <img src="../FV/foto01.jpg" alt="Foto de Mery y Agustín en una salida especial" loading="lazy">
+            </figure>
+        </section>
+
         <footer>
-            7 meses, mismo formato y la misma ilusi&oacute;n de siempre 💛
+            7 meses, mismo formato, siempre cool!
         </footer>
     </main>
 </body>
